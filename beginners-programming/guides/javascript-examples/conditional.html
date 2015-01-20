@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Conditional example</title>
+
+    <link rel="stylesheet" href="">
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    
+  </body>
+
+  <script>
+    var myTown = prompt("Enter your home town or city");
+
+	if(myTown === "Manchester") {
+	  // At each stage here we are doing a test to see if the myTown variable is equal to a certain value
+	  alert("Is it still raining in Manchester?");
+	  // the code inside the curly braces is run if the associated test returns true
+	} else if(myTown === "Barcelona") {
+	  // else if is how we chain another possibility on to the end of the block
+	  alert("You have beautiful architecture, and sun");
+	} else {
+	  // else is basically the last resort if none of the other tests return true
+	  alert("I don't know your home town very well");
+	};
+  </script>
+</html>

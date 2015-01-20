@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Introduction to programming, Part 2</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="prism/prism.css">
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+  <main>
+
+   <hgroup>
+      <h1>Introduction to programming</h1>
+      <h2>Variables</h2>
+    </hgroup>
+
+<nav>
+  <p>Previous:<br><a href="lesson1.html">There's a lot of code. Everywhere.</a></p>
+  <p><a href="index.html">Main index</a></p>
+  <p>Next:<br><a href="lesson3.html">Conditions and loops</a></p>
+</nav>
+
+<p>Now on to the interesting stuff! We'll now have a look at the programming basics that exist in pretty much every programming language, in one form or another. Before starting this section, make a new copy of the <a href="javascript-examples/template.html">template.html</a> file and open it in your browser and text editor.</p>
+
+<h2>Variable basics</h2>
+
+<p>Variables are containers that allow you to store something that you want to use later on, be that a simple name or age value, or something more complicated. Why would you want to do this? Let's look at a simple program that says hello to you: See my <a href="javascript-examples/hello.html">Hello example</a> (don't look at the source code!)</p>
+
+<p>Without variables, it would be impossible to create a personalised hello message. You'd just have to stick to "Hello there.", which would be really boring. So variables are all about allowing us to create programs that dynamically change depending on things that differ as the program is being used, such as the user using the program, the date and time of day, the weather, and so on. Programming is pretty much impossible without variables.</p>
+
+<p>To use a variable, we first have to declare it — we say "I am making this variable exist. Its name is x, and its initial value is y."</p>
+
+<p>A really simple code example:</p>
+
+<pre><code class="language-javascript">var myHairColor = "brown";
+// Note the quotes; these can be single or double quotes;
+//your choice, as long as you are consistent</code></pre>
+
+<p>You could also then change a variable later on, once it is declared.</p>
+
+<pre><code class="language-javascript">var myHairColor = "brown";
+// declare a variable myHairColor, with an initial value of "brown"
+
+myHairColor = "red";
+// change the existing variable myHairColor's value to "red"</code></pre>
+
+<p>A few more simple examples follow:</p>
+
+<pre><code class="language-javascript">var myName = "Chris";
+// Also note that JavaScript is case sensitive, so myname is
+// a different variable to myName
+
+var myAge = 35;
+var haveKids = true;</code></pre>
+
+<div class="exercise">
+<h3>Exercise: Proving how variables exist and are stored</h3>
+
+<p>As a quick exercise, let's go into the browser developer console and try accessing a new variable the console pane (the console is basically a way to access the internal state of the code or application). To open the console, press Ctrl + Shift + I; Cmd + Opt + I on Mac OSX; F12 on Internet Explorer, and click the console tab.</p>
+
+<p>To call or access a variable, you just use the variable name. Enter this into the console:</p>
+
+<pre><code class="language-javascript">myCar</code></pre>
+
+<p>This should give you a result of <code>undefined</code>, because the variable doesn't yet exist.</p>
+
+<p>Let's try declaring the variable: type the following into the console:</p>
+
+<pre><code class="language-javascript">var myCar = "Citroen";</code></pre>
+
+<p>and then trying this again in the console:</p>
+
+<pre><code class="language-javascript">myCar</code></pre>
+
+<p>The console should now return the variable's value to you.</p>
+
+</div>
+
+<p>When we have a value stored in a variable, we can use it in our program by simply saying the variable name again. Let's look at something slightly more complex that actually does something interesting. The prompt function opens up a dialog box asking the user to enter a value into a text box. When they have done so, it stores that value in a variable:</p>
+
+<pre><code class="language-javascript">var myHairColor = prompt("Enter your hair color");
+// Ask the user for their hair color</code></pre>
+
+<p>You can then choose to do something else with that value:</p>
+
+<pre><code class="language-javascript">alert("Chris has " + myHairColor + " hair.");
+// display a personalised message about hair colour</code></pre>
+
+<p><code>alert</code> is a simple function that pings up a dialog box containing whatever message you include inside it, in this case <code>Chris has " + myHairColor + " hair."</code>.</p>
+
+<p>This string of text may look strange, and we'll explain it better later on. For now, let's just say that we are gluing together three things:</p>
+
+<ol>
+  <li>The text <code>"Chris has "</code></li>
+  <li>The current value inside the <code>myHairColor</code> variable</li>
+  <li>The text <code>" hair."</code></li>
+</ol>
+
+<p>A lot of programming involves gluing different things together to get the output you want.</p>
+
+<div class="exercise">
+  <h3>Exercise: write the hello example from before</h3>  
+  <p>The <a href="javascript-examples/hello.html">hello example</a> that we checked out at the very start of this section is very similar in the way that it works to the hair colour example we just studied. I'd like you to try writing the hello example into your working template file, and then run it to get it working. DON'T look at the source code unless you get stuck!</p>
+</div>
+
+<h2>An aside on JavaScript syntax</h2>
+
+<p>Before we go much further, we ought to dwell on some simple but important syntax rules. A slightly more complex example might look like so:</p>
+
+<pre><code class="language-javascript">var squareArea = function(w,h) {
+  // This is a function stored in a variable;
+  //we'll look at these more later
+  var result = w * h;
+  // Here we are multiplying the w and h arguments together and
+  //storing them in a variable called result
+  alert(result);
+  // Now we are printing the result variable into a dialog box
+  // on the screen.
+};</code></pre>
+
+<ol>
+  <li>The <code>var</code> keyword is used to declare a variable; make it exist in the first place.</li>
+  <li>The next bit is the variable name, which can be almost anything of your choosing, but with a few restrictions. You can't use numbers at the start, and you can't use spaces, punctuation or reserved characters anywhere. You are also advised to use easy to remember, simple names, not too long and not too short. Above I've used lower camel case, first word lower case, and subsequent words capitalised and joined onto the end. This makes your variables easy to read and not too complex to type.</li>
+  <li>The next bit is an equals sign, which means "we are making the bit of the left equal to the bit of the right." In this case we are making <code>squareArea</code> equal a function that multiplies two numbers together. This is also called the assignment operator; more on operators below.</li>
+  <li>The final bit of the variable is whatever you want to store inside the variable — in this case an entire function.</li>
+</ol>
+
+<p>The curly braces — <code>{ … }</code> — are very important in JavaScript. These signify the start and end of a block of code that is all related, and is run together according to a set condition or action (e.g. when a user presses a button, or when a variable holds a certain value.) For each open curly brace, there MUST be a closed curly brace, otherwise the program won't work.</p>
+
+<p>The semi colons (<code>;</code>) are also important. These signify the end of one instruction and where another one starts. Without these, the program probably won't work as expected</p>
+
+<p>Also note that whitespace doesn't matter much to JavaScript, except inside strings and as a separator for values, keywords, etc. All the whitespace in your code is basically just there to make the code more readable. So</p>
+
+<pre><code class="language-javascript">var myName;
+
+var yourName;</code></pre>
+
+<p>Is equivalent to</p>
+
+<pre><code class="language-javascript">var MyName;var yourName;</code></pre>
+
+<h2>Variable types</h2>
+
+<p>In JavaScript, different variables have different assigned types:</p>
+
+<ul>
+  <li><strong>Strings</strong> contain strings of text. The presence of quote marks makes them a string. If you didn't use quote marks, you would get an error, because the browser would think the variable value was not a string, but another variable name instead.</li>
+  <li><strong>Integers</strong> contain numbers, which don't need quote marks.</li>
+  <li><strong>Booleans</strong> contain true/false values. These are very useful when creating program logic, as you'll see later.</li>
+  <li><strong>Arrays</strong> contain multiple values at once; these are very useful for containing multiple related values that you want to manipulate in a similar way.</li>
+
+<div class="exercise">
+<h3>Exercise: finding the types of variables</h3>
+
+<p>Let's see if I'm telling the truth. In the JavaScript section of your template file, enter the following block of code, then save, then refresh the browser:</p>
+
+<pre><code class="language-javascript">var myHairColor = "brown";
+// This is a string
+
+var myAge = 35;
+// This is an integer
+
+var haveKids = true;
+// This is a boolean
+
+var faveFoods = ["Coco Pops", "Fajitas", "Curry", "Bacon"];
+// This is an array</code></pre>
+
+<p>Then in the browser console, try outputting the type of each variable, using the <code>typeof</code> operator, like this:</p>
+
+<pre><code class="language-javascript">typeof myHairColor;
+// Return the variable type of the myHairColor variable</code></pre>
+
+<p>What do you get when you try this on an array?</p>
+</div>
+
+<h2>Operators</h2>
+
+<p>In programming you'll meet many operators that you can use for calculations and comparisons. We've already seen a couple, such as <code>=</code> and <code>typeof</code>, and I've provided a more complete list of JavaScript's common operators below for reference. We won't laboriously go through all of these, just a few to give you an idea. We'll see examples of others as we move through the course.</p>
+
+<ol>
+<li><strong>+</strong> : the concatenation or addition operator, depending on what it is used on</li>
+<li><strong>*</strong> : the multiplication operator</li>
+<li><strong>/</strong> : the division operator</li>
+<li><strong>-</strong> : the subtraction operator</li>
+<li><strong>%</strong> : the modulus operator; returns the remainder of one number being divided by another</li>
+<li><strong>=</strong> : the assignment operator</li>
+<li><strong>==</strong> : the equality operator</li>
+<li><strong>===</strong>: the strict equality operator</li>
+<li><strong>||</strong> : the or operator</li>
+<li><strong>&&</strong> : the and operator</li>
+<li><strong>!</strong> : the not operator</li>
+</ol>
+
+<div class="exercise">
+<h3>Exercise: making use of JavaScript operators</h3>
+
+<p>Let's play with a few operators. Try putting each of the below lines into the browser console to see what happens:</p>
+
+<pre><code class="language-javascript">var myHairColor = "brown";
+
+"My hair color is " + myHairColor;
+// Join together the string specified in this line, and the one stored in myHairColor</code></pre>
+
+<pre><code class="language-javascript">var myAge = 34;
+
+myAge + 26;
+// Add together two numbers</code></pre>
+
+<pre><code class="language-javascript">var num1 = "34";
+
+var num2 = "26";
+
+num1 + num2;
+// Add together two strings?</code></pre>
+
+<p>What did the third code block give you? Not what you expected? Why is this?</p>
+
+<p class="note"><strong>Note</strong>: you can change the variable type of your variables with various built in JavaScript functions, for example keep num1 and num2 as strings above, and try the following.</p>
+
+<pre><code class="language-javascript">Number(num1) + Number(num2);</code></pre>
+
+<p>Let's try some other examples, e.g.</p>
+
+<pre><code class="language-javascript">8 % 2;
+
+8 + 4 / 3 * 4;</code></pre>
+
+<p>The last example is interesting - does it give you the result you were expecting? (I would expect the result to be 1!) JS uses <strong>operator precedence</strong> to dictate what order the different parts of the equation will be executed in. If it is not turning out like you'd hoped, you can always add brackets to force the order, for example:</p>
+
+<pre><code class="language-javascript">(8 + 4) / (3 * 4);</code></pre>
+</div>
+
+<nav>
+  <p>Previous:<br><a href="lesson1.html">There's a lot of code. Everywhere.</a></p>
+  <p><a href="index.html">Main index</a></p>
+  <p>Next:<br><a href="lesson3.html">Conditions and loops</a></p>
+</nav>
+
+<hr>
+<p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. Share it, make it better, use it for good.</p>
+   
+  </main>
+
+  </body>
+
+  <script src="prism/prism.js"></script>
+</html>

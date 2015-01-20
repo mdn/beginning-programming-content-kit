@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>JavaScript template</title>
+</head>
+<body>
+  
+  <canvas id="myCanvas" width="500" height="500">
+  <p>Your browser doesn't support Canvas.</p>
+</canvas>
+  
+</body>
+
+<script>
+
+  var myCanvas = document.getElementById('myCanvas');
+  var myContext = myCanvas.getContext('2d');
+  
+  var gradient = myContext.createRadialGradient(225, 225, 0, 225, 225, 180);
+  gradient.addColorStop(0, 'rgba(255,255,0,1)');
+  gradient.addColorStop(1, 'rgba(255,0,0,1)');
+
+  myContext.fillStyle = gradient;
+  myContext.beginPath();
+  myContext.arc(250,250,100,0,Math.PI*2,true);
+  myContext.fill();
+  
+  var img = new Image();
+
+  img.onload = function() {
+    myContext.drawImage(img,0,0,200,200);
+  };
+  
+  img.src = "firefox-logo.png";
+  
+
+</script>
+</html>

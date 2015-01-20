@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>JavaScript template</title>
+</head>
+<body>
+  
+  <canvas id="myCanvas" width="500" height="500">
+  <p>Your browser doesn't support Canvas.</p>
+</canvas>
+  
+</body>
+
+<script>
+  var myCanvas = document.getElementById('myCanvas');
+  var myContext = myCanvas.getContext('2d');
+
+  for(i=0;i<=100;i++) {
+    myContext.fillStyle = 'rgba(0,0,' + (Math.floor(Math.random()*200)) + ',0.5)';
+    myContext.fillRect((i*5),(250+(Math.sin(i/6))*50),10,10);
+  }
+</script>
+</html>

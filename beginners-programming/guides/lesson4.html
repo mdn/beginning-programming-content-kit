@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Introduction to programming, Part 4</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="prism/prism.css">
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+  <main>
+
+    <hgroup>
+      <h1>Introduction to programming</h1>
+      <h2>Doing useful things</h2>
+    </hgroup>
+
+<nav>
+  <p>Previous:<br><a href="lesson3.html">Conditions and loops</a></p>
+  <p><a href="index.html">Main index</a></p>
+  <p>Next:<br><a href="lesson5.html">Have fun drawing: HTML5 canvas basics</a></p>
+</nav>
+
+<p>In general, to do useful things with programming languages, you need to grab an item you want to do something to, and then use code to do something to it.</p>
+
+<p>In JavaScript, we do this by grabbing a reference to the object we want to have an effect on. We've already done this — we've stored some items in variables. You can store anything in a variable, whether it is a simple string or number value, or something more complicated, like a video, paragraph or other element on a web page.</p>
+
+<h2>Making a start</h2>
+
+<p>For this section, make a new copy of the template file. Put the following HTML into your HTML area:</p>
+
+<pre><code class="language-javascript">&lt;h1 class="myHeading"&gt;My heading&lt;/h1&gt;</code></pre>
+
+<p>We can grab a reference to this element using the following line — put this in your JavaScript area:</p>
+
+<pre><code class="language-javascript">var myH1 = document.querySelector('.myHeading');
+// Store a reference to the h1 element inside a variable called myH1</code></pre>
+
+<p>We could then do things to our heading by affecting the variable with more JavaScript. For example, to alter the text inside the heading, you could do this:</p>
+
+<pre><code class="language-javascript">myH1.innerHTML = "My updated heading";
+// Change the content inside our h1 to equal the specified string</code></pre>
+
+<div class="exercise">
+
+<h3>Exercise: improving our game to make things happen in the HTML</h3>
+
+<p>Let's improve the user experience of our game. It is pretty bad form to have all your messages appearing in alert dialog boxes. This isn't something you want to see people using in the real world. It'd be better to have the messages appearing inside your web page. The current code looks like this:</p>
+
+<pre><code class="language-javascript">var randomNumber = Math.floor(Math.random() * 100) + 1;
+
+for(i = 1; i <= 10 ; i++) {
+  var userGuess = prompt("Enter guess " + i);
+
+  if(userGuess == randomNumber) {
+    alert("Congratulations. You got it right!");
+    break;
+  } else {
+    alert("wrong");
+    if(userGuess < randomNumber) {
+      alert("Your guess is too low!");
+    } else if(userGuess > randomNumber) {
+      alert("Your guess is too high!");
+    }
+  }
+}</code></pre>
+
+<p>At this point, open up the template file copy that you wrote the game code into previously. If you haven't got a copy, just create a new copy of the template and paste the above code into the JavaScript section.</p>
+
+<ol>
+  <li>To do this, we need to first create some HTML elements for the previous guesses, result of the last guess, and whether it is too low or too high. Add the following into your HTML area:</li>
+
+<pre><code class="language-javascript">&lt;h1&gt;Number guessing game&lt;/h1&gt;
+&lt;p class="guesses"&gt;&lt;/p&gt;
+&lt;p class="lastResult"&gt;&lt;/p&gt;
+&lt;p class="lowOrHi"&gt;&lt;/p&gt;</code></pre>
+
+  <li>Now we need to store these in variables so we can get at them and do things with them in JavaScript. Add the following lines into the top of your JavaScript area:</li>
+
+<pre><code class="language-javascript">var guesses = document.querySelector(".guesses");
+var lastResult = document.querySelector(".lastResult");
+var lowOrHi = document.querySelector(".lowOrHi");</code></pre>
+
+<li>Next we need to replace the <code>alert()</code> functions with lines to write the results into those paragraphs, not just shout them out in alert boxes. First, find the line <code>var userGuess = prompt("Enter guess " + i);</code>; directly below this line add the following:</li>
+
+<pre><code class="language-javascript">guesses.innerHTML += userGuess + " ";</code></pre>
+
+<li>Now replace the line <code>alert("Congratulations. You got it right!");</code> with</li>
+
+<pre><code class="language-javascript">lastResult.innerHTML = "Congratulations! You got it right!";
+lowOrHi.innerHTML = "";</code></pre>
+
+<li>Replace <code>alert("wrong");</code> with</li>
+
+<pre><code class="language-javascript">lastResult.innerHTML = "Wrong!";</code></pre>
+
+<li>Replace <code>alert("Your guess is too low!");</code> with</li>
+
+<pre><code class="language-javascript">lowOrHi.innerHTML = "Your guess is too low!";</code></pre>
+
+<li>Replace <code>alert("Your guess is too high!");</code> with</li>
+
+<pre><code class="language-javascript">lowOrHi.innerHTML = "Your guess is too high!";</code></pre>
+
+</ol>
+
+<p>Your final code should look like this:</p>
+
+<pre><code class="language-javascript">var randomNumber = Math.floor(Math.random() * 100) + 1;
+
+for(i = 1; i <= 10 ; i++) {
+  var userGuess = prompt("Enter guess " + i);
+  guesses.innerHTML += userGuess + " ";
+
+  if(userGuess == randomNumber) {
+    <strong>lastResult.innerHTML = "Congratulations! You got it right!";
+    lowOrHi.innerHTML = "";</strong>
+    break;
+  } else {
+    lastResult.innerHTML = "Wrong!";
+    if(userGuess < randomNumber) {
+      <strong>lowOrHi.innerHTML = "Your guess is too low!";</strong>
+    } else if(userGuess > randomNumber) {
+      <strong>lowOrHi.innerHTML = "Your guess is too high!";</strong>
+    }
+  }
+}</code></pre>
+
+</div>
+
+<nav>
+  <p>Previous:<br><a href="lesson3.html">Conditions and loops</a></p>
+  <p><a href="index.html">Main index</a></p>
+  <p>Next:<br><a href="lesson5.html">Have fun drawing: HTML5 canvas basics</a></p>
+</nav>
+
+<hr>
+<p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. Share it, make it better, use it for good.</p>
+   
+  </main>
+
+  </body>
+
+  <script src="prism/prism.js"></script>
+</html>

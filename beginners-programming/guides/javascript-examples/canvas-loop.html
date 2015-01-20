@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Canvas loop</title>
+
+    <link rel="stylesheet" href="">
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <canvas id="myCanvas" width="500" height="500">
+	  <p>Your browser doesn't support Canvas.</p>
+	</canvas>
+
+	<!-- Create a canvas to draw on, 500 x 500 big.
+	     Note that HTML comments look different to
+	     JavaScript comments! -->
+  </body>
+
+  <script>
+    var myCanvas = document.getElementById('myCanvas');
+	// Grab a reference to the canvas element
+
+	var myContext = myCanvas.getContext('2d');
+	// Create the context we will draw in
+
+	myContext.fillStyle = 'rgba(0,0,255,0.15)';
+for(i = 0; i <= 9; i++) { // start with variable i having the value 0. Run the loop over and over again until i equals 9, increasing the value of i by 1 after each time
+  myContext.fillRect(i,i,25+i,25+i);  
+}
+  </script>
+</html>

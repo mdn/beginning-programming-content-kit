@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Introduction to programming, Part 7</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="prism/prism.css">
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+  <main>
+
+    <hgroup>
+      <h1>Introduction to programming</h1>
+      <h2>Further improving our guessing game with events</h2>
+    </hgroup>
+
+<nav>
+  <p>Previous:<br><a href="lesson6.html">Functions and events</a></p>
+  <p><a href="index.html">Main index</a></p>
+  <p>Next:<br><a href="lesson8.html">More challenges</a></p>
+</nav>
+
+
+<div class="exercise">
+
+<p>Our game from earlier is still got a problem. We are still using that <code>prompt()</code> function to bring up a dialog box to ask the player of the game for guesses. This is still really bad for user experience. One of the core rules of user experience is to keep the number of pop ups down to a minimum. You all know how annoying popups can be. As we looked at in the last section, we should be able to do our entire app inside the web page, collecting data from the user with form elements. Our code currently looks like this:</p>
+
+<p>The HTML:</p>
+
+<pre><code class="language-markup">&lt;h1&gt;Number guessing game&lt;/h1&gt;
+&lt;p id="guesses"&gt;&lt;/p&gt;
+&lt;p id="lastResult"&gt;&lt;/p&gt;
+&lt;p id="lowOrHi"&gt;&lt;/p&gt;</code></pre>
+
+<p>The JavaScript:</p>
+
+<pre><code class="language-javascript">var randomNumber = Math.floor(Math.random() * 100) + 1;
+
+var guesses = document.getElementById("guesses");
+var lastResult = document.getElementById("lastResult");
+var lowOrHi = document.getElementById("lowOrHi");
+
+for(i = 1; i <= 10 ; i++) {
+  var userGuess = prompt("Enter guess " + i);
+  guesses.innerHTML += userGuess + " ";
+
+  if(userGuess == randomNumber) {
+    lastResult.innerHTML = "Congratulations! You got it right!";
+    lowOrHi.innerHTML = "";
+    break;
+  } else {
+    lastResult.innerHTML = "Wrong!";
+    if(userGuess < randomNumber) {
+      lowOrHi.innerHTML = "Your guess is too low!";
+    } else if(userGuess > randomNumber) {
+      lowOrHi.innerHTML = "Your guess is too high!";
+    }
+  }
+}</code></pre>
+
+<ol>
+<li>So first we need to provide a different way for the user to give us their guesses, given that we want to get rid of the <code>prompt()</code> function. The best way to collect information from users is to use <code>input</code> elements. In your HTML, add the following just before your <code>&lt;/body&gt;</code> tag.</li>
+
+<pre><code class="language-javascript">&lt;div class="form"&gt;
+  &lt;label for="guessField"&gt;Enter your next guess: &lt;/label&gt;
+  &lt;input type="text" id="guessField"&gt;
+  &lt;button id="guessSubmit"&gt;Enter Guess&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+
+<li>Now we need to change our JavaScript so that in each turn of the game, the user's guess is taken from the submitted form, and not a <code>prompt()</code> function. This is trickier than you'd think, so I'll give you some clues:
+
+<ul>
+  <li>You will need to get rid of the loop and instead encapsulate the guess processing code in a function</li>
+  <li>You will need to add an event listener that listens to when the form is submitted (the button is clicked) and as a result runs the function</li>
+  <li>You will need a variable that tracks what guess number we are on and is incremented each time the function runs</li>
+  <li>After 10 guesses we need to end the game with some kind of "Game over" message</li>
+  <li>When the number is guessed correctly, the game should end and no more guesses should be allowed</li>
+</ul>
+
+</li>
+
+</ol>
+
+<p>Lets handle these, one at a time.</p>
+
+<h4>Get rid of the loop and instead encapsulate the guess processing code in a function</h4>
+
+<ul>
+  <li>This requires us to replace the for loop line with a function</li>
+  <li>We also need to grab references to the relevant form elements in JavaScript</li>
+  <li>We also need to grab the guess from the value inside the form <code>input</code> element, not the <code>prompt()</code> function. You can grab the value inside a form <code>input</code> using its <code>value</code> property, so for example <code>formElement.value</code>.</li>
+</ul>
+
+<pre><code class="language-javascript">var randomNumber = Math.floor(Math.random() * 100) + 1;
+
+var guesses = document.getElementById("guesses");
+var lastResult = document.getElementById("lastResult");
+var lowOrHi = document.getElementById("lowOrHi");
+
+<strong>var guessSubmit = document.getElementById("guessSubmit");
+// reference to the button that submits the guess
+var guessField = document.getElementById("guessField");
+// reference to the text input field that the guess is typed into</strong>
+
+<strong>function checkGuess()</strong> {
+// replace the for loop with a function
+  var userGuess = Number(guessField.value);
+  // no more prompt. The guess is now equal to the value inside
+  // the input field when the function is run.
+  guesses.innerHTML += userGuess + " ";
+
+  if(userGuess == randomNumber) {
+    lastResult.innerHTML = "Congratulations! You got it right!";
+    lowOrHi.innerHTML = "";
+  } else {
+    lastResult.innerHTML = "Wrong!";
+    if(userGuess < randomNumber) {
+      lowOrHi.innerHTML = "Your guess is too low!";
+    } else if(userGuess > randomNumber) {
+      lowOrHi.innerHTML = "Your guess is too high!";
+    }
+
+  }
+}</code></pre>
+
+<h4>Add an event listener that listens to when the form is submitted (the button is clicked) and as a result runs the function</h4>
+
+<p>This is an easy step compared to all the changes we had to make before. Here we just need to add a line below the function that adds an <code>onclick</code> listener to the button that functions the function when the click happens:</p>
+
+<pre><code class="language-javascript">guessSubmit.onclick = checkGuess;</code></pre>
+
+<h4>Add a variable that tracks what guess number we are on and is incremented each time the function runs</h4>
+
+<p>Because we no longer have a loop, the guess number will no longer increment on its own. we need to emulate the loop functionality by first adding a variable that tracks the guess number. We then need to increase that value by one each time the <code>checkGuess</code> function is run.</p>
+
+<pre><code class="language-javascript">var randomNumber = Math.floor(Math.random() * 100) + 1;
+
+var guesses = document.getElementById("guesses");
+var lastResult = document.getElementById("lastResult");
+var lowOrHi = document.getElementById("lowOrHi");
+
+var guessSubmit = document.getElementById("guessSubmit");
+// reference to the button that submits the guess
+var guessField = document.getElementById("guessField");
+// reference to the text input field that the guess is typed into
+<strong>var guessCount = 1;
+// Add a variable that tracks the guess number we are on</strong>
+
+<strong>function checkGuess()</strong> {
+// replace the for loop with a function
+  var userGuess = Number(guessField.value);
+  // no more prompt. The guess is now equal to the value inside
+  // the input field when the function is run.
+  guesses.innerHTML += userGuess + " ";
+  
+  if(userGuess == randomNumber) {
+    lastResult.innerHTML = "Congratulations! You got it right!";
+    lowOrHi.innerHTML = "";
+  } else {
+    lastResult.innerHTML = "Wrong!";
+    if(userGuess < randomNumber) {
+      lowOrHi.innerHTML = "Your guess is too low!";
+    } else if(userGuess > randomNumber) {
+      lowOrHi.innerHTML = "Your guess is too high!";
+    }
+
+  <strong>guessCount++;
+  // after each guess, increase the guess count
+  guessField.value = "";
+  // and empty the text input field ready for the next guess</strong>
+  }
+}</code></pre>
+
+<h4>After 10 guesses we need to end the game with some kind of "Game over" message</h4>
+
+<p>This is slightly trickier and requires us to change our <code>if ... else</code> structures to check if the <code>guessCount</code> is equal to 10 or not. If so, then end the game with some kind of message. If not, carry on with the code as it was before.
+
+<pre><code class="language-javascript">var randomNumber = Math.floor(Math.random() * 100) + 1;
+
+var guesses = document.getElementById("guesses");
+var lastResult = document.getElementById("lastResult");
+var lowOrHi = document.getElementById("lowOrHi");
+
+var guessSubmit = document.getElementById("guessSubmit");
+// reference to the button that submits the guess
+var guessField = document.getElementById("guessField");
+// reference to the text input field that the guess is typed into
+var guessCount = 1;
+// Add a variable that tracks the guess number we are on
+
+function checkGuess() {
+// replace the for loop with a function
+  var userGuess = Number(guessField.value);
+  // no more prompt. The guess is now equal to the value inside
+  // the input field when the function is run.
+  guesses.innerHTML += userGuess + " ";
+  
+  function checkGuess() {
+  var userGuess = Number(guessField.value);
+
+  <strong>if(guessCount == 10) {
+  // if 10 guess have been had
+    lastResult.innerHTML = "!!!GAME OVER!!!";
+    // provide a game over message
+  } else {</strong>
+    
+
+    if(userGuess == randomNumber) {
+      lastResult.innerHTML = "Congratulations! You got it right!";
+      lowOrHi.innerHTML = "";
+    } else {
+      lastResult.innerHTML = "Wrong!";
+      if(userGuess < randomNumber) {
+        lowOrHi.innerHTML = "Your guess is too low!";
+      } else if(userGuess > randomNumber) {
+        lowOrHi.innerHTML = "Your guess is too high!";
+      }
+
+    guessCount++;
+    // after each guess, increase the guess count
+    guessField.value = "";
+    // and empty the text input field ready for the next guess
+  }
+}</code></pre>
+
+<h4>When the number is guessed correctly, the game should end and no more guesses should be allowed.</h4>
+
+<p>This is a big issue: when the number is guessed correctly, we no longer want users to be able to enter more guesses; when this happens it totally breaks the game. There are a lot of different options that could be chosen to rectify this. I chose to add a function called <code>disableForm</code> that stops the form being clickable when run. I then chose to call this function when either the 10th guess is reached, or the number is guessed correctly.</p>
+
+<p class="note">This again shows the power of reusable functions!</p>
+
+<pre><code class="language-javascript">var randomNumber = Math.floor(Math.random() * 100) + 1;
+
+var guesses = document.getElementById("guesses");
+var lastResult = document.getElementById("lastResult");
+var lowOrHi = document.getElementById("lowOrHi");
+
+var guessSubmit = document.getElementById("guessSubmit");
+var guessField = document.getElementById("guessField");
+var guessCount = 1;
+
+function checkGuess() {
+  var userGuess = Number(guessField.value);
+  guesses.innerHTML += userGuess + " ";
+
+  if(guessCount == 10) {
+    lastResult.innerHTML = "!!!GAME OVER!!!";
+    <strong>disableForm();</strong>
+  } else {
+    
+    if(userGuess == randomNumber) {
+      lastResult.innerHTML = "Congratulations! You got it right!";
+      lowOrHi.innerHTML = "";
+      <strong>disableForm();</strong>
+    } else {
+      lastResult.innerHTML = "Wrong!";
+      if(userGuess < randomNumber) {
+        lowOrHi.innerHTML = "Your guess is too low!";
+      } else if(userGuess > randomNumber) {
+        lowOrHi.innerHTML = "Your guess is too high!";
+      }
+    }
+
+    guessCount++;
+    guessField.value = "";
+  }
+}
+
+<strong>function disableForm() {
+  var wholeForm = document.querySelector(".form");
+  // grab a reference to the whole form (the contents of the
+  // div with class form)
+  wholeForm.style.opacity = 0.5;
+  // change the opacity of the form to 0.5
+  guessField.setAttribute("disabled", "disabled");
+  guessSubmit.setAttribute("disabled", "disabled");
+  // disable the form field and submit button so they can
+  // no longer be used
+}</strong>
+
+guessSubmit.onclick = checkGuess;</code></pre>
+
+</div>
+
+<nav>
+  <p>Previous:<br><a href="lesson6.html">Functions and events</a></p>
+  <p><a href="index.html">Main index</a></p>
+  <p>Next:<br><a href="lesson8.html">More challenges</a></p>
+</nav>
+
+<hr>
+<p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. Share it, make it better, use it for good.</p>
+   
+  </main>
+  </body>
+
+  <script src="prism/prism.js"></script>
+</html>

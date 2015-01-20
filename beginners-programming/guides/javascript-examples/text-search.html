@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Text search</title>
+
+    <link rel="stylesheet" href="">
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <style>
+      #results strong {
+      	background-color: yellow;
+      	padding: 2px;
+      }
+    </style>
+  </head>
+
+  <body>
+      <h1>Text search app</h1>
+
+
+<div class="form">
+  <div>
+    <label for="text">Enter your text to search: </label><textarea id="text" cols="80" rows="15"></textarea>
+  </div>
+  <div>
+    <label for="searchString">Enter text to search for: </label><input type="text" id="searchString">
+  </div>
+  <button id="submit">Search</button><button id="clear">Clear</button>
+</div>
+
+<p id="resultMessage"></p>
+<p id="results"></p>
+
+
+  </body>
+
+  <script>
+    var searchButton = document.getElementById("submit");
+    var clearButton = document.getElementById("clear");
+
+    var resultMessage = document.getElementById("resultMessage");
+    var results = document.getElementById("results");
+
+    function runSearch() {
+      var text = document.getElementById("text").value;
+      var searchString = document.getElementById("searchString").value;
+      
+      var confirmResult = text.indexOf(searchString);
+      
+      if(text == "" || searchString == "") {
+        resultMessage.innerHTML = "You need to enter a search term and block of text to search!";
+      } else {
+        if(confirmResult != -1) {
+          var newText = text.replace(searchString, "<strong>" + searchString + "</strong>", "g");
+
+          results.innerHTML = newText; 
+          resultMessage.innerHTML = "Search term highlighted in text";
+
+        } else {
+        	resultMessage.innerHTML = "Your search term has not been found in the text";
+          results.innerHTML = "";
+        }
+      }
+    }
+
+    function clearFields() {
+      document.getElementById("text").value = "";
+      document.getElementById("searchString").value = "";
+
+      resultMessage.innerHTML = "";
+      results.innerHTML = "";
+    }
+
+    searchButton.onclick = runSearch;
+    clearButton.onclick = clearFields;
+
+  </script>
+</html>

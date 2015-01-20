@@ -1,0 +1,243 @@
+*, *:before, *:after {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+
+      
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      
+      html {
+        font-family: 'Sorts Mill Goudy', serif;
+        font-size: 10px;
+        background-color: white;
+      }
+      
+      body {
+        max-width: 700px;
+        margin: 0 auto;
+        background-color: white;
+      }
+      
+      main {
+        padding: 10px; 
+      }
+      
+      p, li {
+       font-size: 1.7rem; 
+       line-height: 3rem;
+      }
+
+      h2 + p, h3 + p {
+        text-indent: 1.5rem;
+      }
+      
+      h1, h2, h3 {
+       font-family: 'Alfa Slab One', cursive;
+      }
+      
+      hgroup {
+        margin: 0; 
+      }
+      
+      h1 {
+        text-transform: uppercase;
+        text-align: center;
+        font-size: 4rem; 
+        width: 100%;
+        margin: 0;
+        padding: 30px 20px;
+        color: white;
+        background-color: purple;
+        letter-spacing: 0.3rem;
+        text-shadow: -1px -1px 1px #aaa,
+                     0px 4px 1px rgba(0,0,0,0.5),
+                     4px 4px 5px rgba(0,0,0,0.7),
+                     0px 0px 7px rgba(0,0,0,0.4);
+        box-shadow: 0px 5px 10px 3px rgba(0,0,0,0.5);
+      }
+      
+      h2 {
+        font-size: 3rem; 
+        letter-spacing: 0.2rem;
+        color: purple;
+      }
+      
+      hgroup h2 {
+        text-align: center; 
+        margin-bottom: -1rem;
+      }
+      
+      h3 {
+        font-size: 2rem; 
+        letter-spacing: 0.2rem;
+      }
+
+      h4 {
+        font-size: 2rem; 
+        letter-spacing: 0.2rem;
+      }
+
+      a:link {
+        font-weight: bold;
+      }
+
+      a:hover, a:focus {
+        text-decoration: none;
+      }
+
+      .note, pre, nav {
+        padding: 20px 10px;
+        border-radius: 20px;
+        background-image: -webkit-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.2));
+        background-image: -moz-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.2));
+        background-image: -ms-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.2));
+        background-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.2));
+        font-size: 1.5em;
+      }
+      
+      .note {
+        background-color: red;
+        background-color: rgba(255,0,0,0.5);
+      }
+
+      pre {
+        background-color: #eee;
+        position: relative;
+      }
+
+      p > code, li > code {
+        background-color: rgba(0,0,0,0.1);
+        color: purple;
+        padding: 2px 4px;
+      }
+
+      blockquote {
+        font-style: italic;
+        color: #666;
+        position: relative;
+      }
+
+      blockquote:before {
+        content: "“";
+        font-size: 10em;
+        position: absolute;
+        left: -0.7em;
+        top: -0.3em;
+        color: purple;
+      }
+
+      main img, main iframe {
+        display: block;
+        max-width: 100%;
+        margin: 0 auto;
+        border: 1px solid black;
+      }
+
+      .highlight1 {
+        background-color: rgba(255,0,0,0.2);
+        border: 1px dashed rgba(255,0,0,0.7);
+      }
+
+      .highlight2 {
+        background-color: rgba(0,150,150,0.2);
+        border: 1px dashed rgba(0,150,150,0.7);
+      }
+
+      .highlight3 {
+        background-color: rgba(0,0,255,0.2);
+        border: 1px dashed rgba(0,0,255,0.7);
+      }
+
+      .highlight4 {
+        background-color: rgba(255,255,0,0.2);
+        border: 1px dashed rgba(255,255,0,0.7);
+      }
+      
+      pre span {
+        cursor: pointer;
+      }
+
+      pre span:before {
+        content: attr(data-label);
+        opacity: 0;
+
+        padding: 5px 20px 5px 5px;
+        border-radius: 5px 0 0 5px;
+        color: white;
+        font-size: 0.8em;
+        box-shadow: -2px 0px 0px black;
+
+        position: absolute;
+        left: -24em;
+
+        text-align: right;
+        width: 25em;
+
+        -webkit-transform: translateY(-5px);
+        -moz-transform: translateY(-5px);
+        -ms-transform: translateY(-5px);
+        transform: translateY(-5px);
+        
+        background: #666;
+        background: linear-gradient(225deg, transparent 8px, #666 9px) top right no-repeat,
+                    linear-gradient(315deg, transparent 8px, #666 9px) bottom right no-repeat;
+        background-size: 100% 50%;
+      }
+
+      pre span:hover:before, pre span:focus:before {
+        opacity: 1;
+        transition: 1s all;
+      }
+
+      nav p {
+        font-size: 0.8em;
+        line-height: 1.5;
+      }
+
+      nav {
+        padding: 1em;
+        margin-top: 3em;
+        margin-bottom: 1em;
+        
+        display: -webkit-flex;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -moz-box;
+        display: flex;
+
+        -webkit-align-items: center;
+        -moz-align-items: center;
+        -ms-align-items: center;
+        align-items: center;
+
+        -webkit-box-align: center;
+        -moz-box-align: center;
+        -ms-box-align: center;
+
+        -webkit-justify-content: space-between;
+        -moz-justify-content: space-between;
+        -ms-justify-content: space-between;
+        justify-content: space-between;
+
+        -webkit-box-pack: justify;
+        -moz-box-pack: justify;
+        -ms-box-pack: justify;
+      }
+
+      .exercise {
+        border-left: 10px solid purple;
+        padding-left: 10px;
+      }
+      
+      @media all and (max-width: 600px) {
+        body {
+          max-width: none;
+          width: 100%;
+          
+        }
+      }

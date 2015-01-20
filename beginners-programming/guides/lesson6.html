@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Introduction to programming, Part 6</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="prism/prism.css">
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+  <main>
+
+    <hgroup>
+      <h1>Introduction to programming</h1>
+      <h2>Functions and events</h2>
+    </hgroup>
+
+<nav>
+  <p>Previous:<br><a href="lesson5.html">Have fun drawing: HTML5 canvas basics</a></p>
+  <p><a href="index.html">Main index</a></p>
+  <p>Next:<br><a href="lesson7.html">Further improving our guessing game with events</a></p>
+</nav>
+
+<h2>Functions</h2>
+
+<p>We've already seen in-built JavaScript functions, but the good news is that you can define your own. Functions allow you to encapsulate specific code in a block, which you can then easily call any time you like, avoiding the need for you to keep writing the same code out over and over again. As you can imagine, this is really useful.</p>
+
+<h3>A first function example</h3>
+
+<p>We've already looked at some code for creating a random number. Let's now look specifically at generating a random whole number between 1 and 10.</p>
+
+<div class="exercise">
+<h3>Exercise: Creating a simple function</h3>
+<p>Create a new template copy; in the browser console, enter the following line a few times:</p> 
+
+<pre><code class="language-javascript">var randomNumber = Math.floor(Math.random() * 10) + 1;
+// Create random number 0-1, multiply it by 10, round down that
+// result to nearest whole number, add 1.</code></pre>
+
+<p>Writing this out each time you want a random number will quickly get very boring, so let's put it in a function. Enter the following in the JavaScript area of your template, then save and refresh.</p>
+
+<pre><code class="language-javascript">function random10() { // Create a new function called random10
+  var randomNumber = Math.floor(Math.random() * 10) + 1;
+  // generate random number
+  return randomNumber; // return it out of the function
+};</code></pre>
+
+<p class="note"><strong>Note</strong>: This is just one way of creating your own function; there are other ways, but we'll move on, as time is short.</p>
+
+<p>Now every time you want a random number between 1 and 10, you can just call this:</p>
+
+<pre><code class="language-javascript">random10();</code></pre>
+
+<p>Try entering the above line in your browser console a few times: Much easier!</p>
+</div>
+
+<p>So the function contains a line that runs our random number code and stores it in a variable called <code>randomNumber</code>, and a second line that returns the <code>randomNumber</code> variable back out of the function so it can be used outside the code.</p>
+
+<p>The reason this is needed is <em>variable scoping</em> - this allows variables to be accessed in the space they were created in. If they are created inside a function, they can only be used inside that function unless you return them out of it. If they are created not inside any functions, they can be accessed from anywhere inside the program (this is called having <em>Global scope</em>).</p>
+
+<p class="note">Note that open and close brackets have to be included after the function name to run it (<em>invoke</em> it, in proper terminology), so we have to write <code>random10()</code>, not just <code>random10</code>. The <code>()</code> is sometimes called the <em>invocation operator</em>. Try running just <code>random10</code> in the console to see what happens!</p>
+
+<h3>Function arguments</h3>
+
+<p>And there's more. We've also already seen that we can give functions input values (called <code>arguments</code> or <code>parameters</code>), for example above, when we gave the <code>Math.floor</code> function a number to round down:</p>
+
+<pre><code class="language-javascript">var randomNumber = Math.floor(Math.random() * 10) + 1;
+// "Math.random() * 10" is Math.floor()'s argument</code></pre>
+
+<p>So we could go further and give our function a number as an input, so that you can tell it to generate a random number between 1 and whatever you want.</p>
+
+<div class="exercise">
+<h3>Exercise: Giving our function an argument</h3>
+
+<p>Update our function to the following:</p>
+
+<pre><code class="language-javascript">function random(input) {
+// same function as before, except this time we are allowing our
+// function to accept an input value
+  var randomResult = Math.floor(Math.random() * input) + 1;
+  return randomResult;  
+};</code></pre>
+
+<p>Now try running the function in your console a few times, for example:</p>
+
+<pre><code class="language-javascript">randomNumber(250)</code></pre>
+</div>
+
+<p>Cool huh? You can see both the above code examples contained in my <a href="javascript-examples/function.html">basic function example</a>.</p>
+
+<h3>A canvas function</h3>
+
+<p>Lets go a bit further then, and work on taking some code we created earlier and putting it into a reusable function. For example, my sine wave example from above would look something like this:</p>
+
+<pre><code class="language-javascript">var myCanvas = document.getElementById('myCanvas');
+var myContext = myCanvas.getContext('2d');
+
+function sineWave(number,y) {
+// two arguments are the number of squares to draw, and the y axis
+//modifier to start drawing the sine wave at
+  for(i=0;i<=number;i++) {
+  // the number argument is being used in the exit condition
+    myContext.fillStyle = 'rgba(0,0,'
+      + (Math.floor(Math.random()*200)) + ',0.5)';
+    myContext.fillRect((i*5),(y+(Math.sin(i/6))*50),10,10);
+    // ## The y axis modifier is being plugged in here to set a vertical
+    // position for the sine wave to start at. 
+    // ## i divided by 6 is needed to make the amount the sine wave value
+    // changes each time small, so you see an appreciable curve. change
+    // the 6 to 4, then 3, then 2, to see what I mean.
+    // ## This sin value is then multiplied by 50 to make the sine wave a
+    // bit more visible, as sine wave values range between -1 and 1
+    // - that would be a very small curve!
+  }
+};</code></pre>
+
+<p>Here we have a function with two input arguments, the number of squares to draw and the starting position of the sine wave on the y axis. I've then plugged those numbers in to the drawing function as the maximum bound set by the exit condition, and the modifier of the y coordinate (before it was set to a constant 250).</p>
+
+<p>Now we can write</p>
+
+<pre><code class="language-javascript">sineWave(200,150);</code></pre>
+
+<p>to draw a sine wave of 150 squares that begins at 200 pixels down the canvas.</p>
+
+<p class="note">If you are writing this out yourself, remember that you need a canvas in your HTML, if you haven't got one already:</p>
+
+<pre><code class="language-markup">&lt;canvas id="myCanvas" width="500" height="500"&gt;
+&lt;/canvas&gt;</code></pre>
+
+<div class="exercise">
+<h3>Create your own function</h3>
+<p>Try creating your own reusable function. How about a more complex version that takes in multiple arguments, allowing you to set your own colour as well? Try it! And then try something more complex too.</p>
+</div>
+
+<h2>User interaction with events</h2>
+
+<p>Another essential part of programming is user interaction - how do you allow your users to interact with the user interface of your web page, application or whatever it is you are building and make things happen? This is done with event listeners — these are basically listening posts that listen out for an event happening (such as a button being clicked) then fire a notification when that thing happens that you can then do something in response to.</p>
+
+<p>In JavaScript, you can use events in a variety of ways, some of them better than others. In the next example we'll just show one, to give you the idea.</p>
+
+<div class="exercise">
+<h3>Exercise: Simple events exercise</h3>
+
+<p>Let's set up a simple button that generates a message when clicked. First of all, take a new copy of the template file. Add the following to the HTML area:</p>
+
+<pre><code class="language-javascript">&lt;button class="welcome"&gt;Click me!&lt;/button&gt;</code></pre>
+
+<p>And now some JavaScript — put this in your JavaScript area:</p>
+
+<pre><code class="language-javascript">var button = document.querySelector('.welcome');
+button.onclick = function() {
+// so when the button is clicked, we run a nameless (anonymous)
+// function containing the alert we want to trigger
+  alert("Ouch, that hurt!");
+};</code></pre>
+
+<p>If you add these and run the page, the alert message should appear every time you press the button. This function is an <em>anonymous function</em>, meaning it doesn't have a name, and is just acting as a container for the code we want to run. You could also write</p>
+
+<pre><code class="language-javascript">var button = document.querySelector('.welcome');
+
+function clicky() {
+  alert("Ouch, that hurt!");
+};
+
+button.onclick = clicky;</code></pre>
+
+<p>Which uses a <em>named</em> function, and does the same thing. This function does have a definite name, which can be referenced later on.</p>
+</div>
+
+<p>Note that in this case we are not including the invokation operator — the <code>()</code> - after <code>clicky</code>. This is because in this case we just want to reference the named function we are pointing to, but not run it until the button is clicked. The <code>()</code> is already included where we define the function (<code>function clicky() { ... }</code>); we shouldn't include it twice otherwise it will just run immediately when the page loads.</p>
+
+
+<div class="exercise">
+  <h3>Exercise: a simple number multiplying app</h3>
+
+  <p>Let's apply what we've learnt in this part of the course to building a simple little app that multiplies two numbers together and gives us the result. To allow the users of our app to enter the numbers to be multiplied, we'll use two form <code>input</code> elements.
+
+  <p>Make a new copy of the template, then put the following in its HTML area:</p>
+
+<pre><code class="language-markup">&lt;div class="form"&gt;
+  &lt;label for="number1"&gt;First number: &lt;/label&gt;&lt;input type="text" class="number1" id="number1"&gt;
+  &lt;label for="number2"&gt;Second number: &lt;/label&gt;&lt;input type="text" class="number2" id="number2"&gt;
+  &lt;button class="multiply" id="multiply"&gt;Multiply numbers&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+
+  <p class="note"><strong>Note</strong>: For now, don't worry too much about how these work. This is basically the kind of code used to create all those form fields that you have used on websites to register on sites when buying stuff, etc.</p>
+
+  <p>We'll also need an element to display the result of the multiplication. Let's just use a simple paragraph — add this to the HTML area:</p>
+
+<pre><code class="language-markup">&lt;p class="result"&gt;The result is&lt;/p&gt;</code></pre>
+
+  
+<p>Next, we need to create variables to contain all the things we need to do things to. To start off with we just need to reference the button, and the result paragraph, in variables. Remember that they have class attributes, and to reference elements we can use <code>var variableName = document.querySelector(".class");</code>.</p>
+
+<p>Add the following to the JavaScript area:</p>
+
+<pre><code class="language-javascript">var multiplyNumbers = document.querySelector(".multiply");
+var result = document.querySelector(".result");</code></pre>
+
+    <p>Next we need to create a function that multiplies the two values inside the form <code>input</code> elements. We would do it like this:</p>
+      <ol>
+        <li>Use the same function as we did above to grab the input elements by their classess.</li>
+        <li>Get the current values put inside those form elements by grabbing the result of the above step and appending <code>.value</code> to those variables (you can grab the current value of a form element by doing <code>formElement.value</code>).</li>
+        <li>Multiply the above two values and store the result in a new variable.</li>
+        <li>Make the <code>innerHTML</code> of the result paragraph equal to the result of the multiplication</li>
+      </ol>
+
+<p>Add the following to the JavaScript area, underneather what is already there:</p>
+
+<pre><code class="language-javascript">function multiply() {
+  var number1 = document.querySelector(".number1").value;
+  var number2 = document.querySelector(".number2").value;
+  var value = number1 * number2;
+  result.innerHTML = "The result is " + value;
+}</code></pre>
+    <p>Now you need to set an event handler on the button, so that when it is clicked it runs the multiplication function. Add the following line to the bottom of the JavaScript area:</p>
+
+ <pre><code class="language-javascript">multiplyNumbers.onclick = multiply;</code></pre>   
+
+  <p>As a bonus step, let's explore a different event that makes the app work a bit differently. There is an event called <code>blur</code>, which is fired on a form element when the element loses focus (this is when you tab out of a form input, or click somewhere else so it stops being selected.)</p>
+
+  <ol>
+    <li>First of all, delete the <code>button</code> element, and the variable that references it (<code>multiplyNumbers</code> in my above code.)</li>
+
+    <li>Now add the following two variable definition lines below the first one — note that here we are grabbing the input elements themselves inside variables, not their values:</li>
+
+<pre><code class="language-javascript">var input1 = document.querySelector(".number1");
+var input2 = document.querySelector(".number2");</code></pre>
+
+    <li>Now we just need to swap out our event handler lines; replace the original one with the following two:</li>
+
+<pre><code class="language-javascript">input1.onblur = multiply;
+input2.onblur = multiply;</code></pre>
+
+    <li>Now try it! You should now find that the multiplied value is updated whenever you unfocus a form element.</li>
+
+  </ol>
+
+</p></div>
+
+<p class="note">Another quick improvement that you could make to the code is related to the variable definitions inside the function. Because you've already stored the form elements themselves in variables before the function starts, you can change the first two lines inside the function to this:</p>
+
+<pre><code class="language-javascript">var number1 = input1.value;
+var number2 = input2.value;</code></pre>
+
+</div>
+
+
+
+
+
+<nav>
+  <p>Previous:<br><a href="lesson5.html">Have fun drawing: HTML5 canvas basics</a></p>
+  <p><a href="index.html">Main index</a></p>
+  <p>Next:<br><a href="lesson7.html">Further improving our guessing game with events</a></p>
+</nav>
+
+<hr>
+<p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. Share it, make it better, use it for good.</p>
+   
+  </main>
+  </body>
+
+  <script src="prism/prism.js"></script>
+</html>

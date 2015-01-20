@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Introduction to programming, Part 9</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="prism/prism.css">
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+  <main>
+
+    <hgroup>
+      <h1>Introduction to programming</h1>
+      <h2>Objects and going further</h2>
+    </hgroup>
+
+<nav>
+  <p>Previous:<br><a href="lesson8.html">More challenges</a></p>
+  <p><a href="index.html">Main index</a></p>
+</nav>
+
+
+<h2>Objects</h2>
+
+<p>An object takes the concept of a function further, allowing you to encapsulate an entire set of functionality into a single reusable place, which can include multiple variables and functions, although when they are part of an object, they are called properties and methods. We've already seen some built in methods and properties being used in our previous code examples. For example, fillRect is a method of any canvas object that draws a rectangle; fillStyle is a property of any canvas that contains the pen colour you've set for the canvas.</p>
+
+<p>In JavaScript, everything is an object, the methods and properties of which depend on the type of object and the context it is being used in.</p>
+
+<p>As another example, when you store a string in a variable, that variable is an object. All string variables automatically have a property called length (amongst others), which contains the number of characters in the string. So in this case:</p>
+
+<pre><code class="language-javascript">myName = 'Chris';
+myName.length;</code></pre>
+
+<p><code>myName.length</code> would return 5.</p>
+
+<p>An object is generally meant to be modelling a real life thing in an abstract way, with different features of that thing grouped together and described in code. You can create your own objects; I won't go into this too much because it is quite advanced, but I'll include an example just for completeness' sake.</p>
+
+<p>If you wanted to store information on dogs, you can create a Dog object like so:</p>
+
+<pre><code class="language-javascript">var Dog = {};</code></pre>
+
+<p>This is called <em>Object literal notation</em>, and is only one way of creating an object. This is an empty object that we can now add properties and methods into, by using <em>dot notation</em>:
+
+<pre><code class="language-javascript">Dog.legs = 4;
+Dog.tail = true;
+Dog.food = "meat";
+Dog.bark = function() {
+  alert("Woof!!");
+}</code></pre>
+
+<p>Enter all the code in this section so far into the JS pane on JSBin, then run it. Try typing some commands into the console like this, to see what you get:</p>
+
+<pre><code class="language-javascript">Dog;
+Dog.food;
+Dog.bark();</code></pre>
+
+<p>You can also extend objects to create new objects with more specific attributes. These objects inherit all the properties and methods of their parents. If we wanted to create a more specific class of dog, say a Golden Retriever, we would have to first create a <em>constructor function</em>, which is function containing method and property information to build an object from:</p>
+
+<pre><code class="language-javascript">function Dog(breed,coat) {
+// It's a normal function, with two arguments passed in for
+// more specific information that vary for each sub class 
+   this.legs = 4;
+   // these are constant for all Dog sub-classes. "this.legs"
+   // means "legs is being made a property of the current object,
+   // whatever that is"
+   this.tail = true;
+   this.food = "meat";
+   this.bark = function() {
+     alert("Woof!!"); 
+   };
+  
+   this.breed = breed;
+   // These will vary by sub-class, depending on what values you
+   // give the constructor function's arguments when you create
+   // each subclass.
+   this.coat = coat;
+}</code></pre>
+
+<p>Now to create a specific subclass of <code>Dog</code> called <code>Retriever</code>, you do this:</p>
+
+<pre><code class="language-javascript">var Retriever = new Dog("Golden Retriever","Golden");</code></pre>
+
+<p>Try putting the above two code blocks into the JavaScript pane of JSBin. Now try typing the following into the console:</p>
+
+<pre><code class="language-javascript">Retriever</code></pre>
+
+<p>You'll see that you get an object returned with all the properties that the Dog constructor defines, plus the two specific properties we defined.</p>
+
+<p>You can even add other specific properties using the same dot notation we saw before, to further extend the <code>Retriever</code> class:</p>
+
+<pre><code class="language-javascript">Retriever.mood = "Chilled out";</code></pre>
+
+<p>We will leave our explanation of objects there, as they are complicated, and our time is short!</p>
+
+<h2>How to go further</h2>
+
+<p>I hope this brief exploration of programming has helped give you a rung on the ladder, and inspired you to go and learn more! Next, I would advise you to do the following:</p>
+
+<ul>
+  <li>Sign up to <a href="http://www.codecademy.com/dashboard">Codecademy</a> and work through all the JavaScript Fundamentals courses. This is a great way to get the basics into your head.</li>
+  <li>Work through some of the other courses on codecademy such as the Web fundamentals, jQuery, Python and Ruby courses.</li>
+  <li>Have a look Code School's <a href="http://www.codeschool.com/courses">training videos</a></li>
+  <li>Download and read the rather excellent free book, <a href="http://eloquentjavascript.net/">Eloquent JavaScript</a>.</li>
+  <li>Look at lots of other people's code! Go on to your favourite web sites and view source, go to <a href="https://www.github.com">Github</a> and search for some interesting code.</li>
+</ul>
+
+<nav>
+  <p>Previous:<br><a href="lesson8.html">CSS positioning</a></p>
+  <p><a href="index.html">More challenges</a></p>
+</nav>
+
+<hr>
+<p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. Share it, make it better, use it for good.</p>
+   
+  </main>
+  </body>
+
+  <script src="prism/prism.js"></script>
+</html>

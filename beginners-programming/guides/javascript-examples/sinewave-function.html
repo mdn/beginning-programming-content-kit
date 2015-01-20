@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Sinewave function</title>
+
+    <link rel="stylesheet" href="">
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <canvas id="myCanvas" width="500" height="500">
+      <p>Your browser doesn't support Canvas.</p>
+    </canvas>
+  
+  </body>
+  <script>
+
+    var myCanvas = document.getElementById('myCanvas');
+    var myContext = myCanvas.getContext('2d');
+
+    function sineWave(number,y) { // two arguments are the number of squares to draw, and the y axis modifier to start drawing the sine wave at
+      for(i=0;i<=number;i++) { // the number argument is being used in the exit condition
+        myContext.fillStyle = 'rgba(0,0,' + (Math.floor(Math.random()*200)) + ',0.5)';
+        myContext.fillRect((i*5),(y+(Math.sin(i/6))*50),10,10); // the y axis modifier is being plugged in here to set a position for the sine wave to start at. 
+        // i divided by 6 is needed to make the amount the sine wave value changes each time small, so you see an appreciable curve. change the 6 to 4, then 3, then 2, to see what I mean.
+        // this sin value is then multiplied by 50 to make the sine wave a bit more visible, as sine wave values range between -1 and 1 - that would be a very small curve!
+      }
+    };
+
+  </script>
+</html>

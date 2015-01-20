@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Introduction to programming, Part 3</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="prism/prism.css">
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+  <main>
+
+    <hgroup>
+      <h1>Introduction to programming</h1>
+      <h2>Conditions and loops</h2>
+    </hgroup>
+
+<nav>
+  <p>Previous:<br><a href="lesson2.html">Variables</a></p>
+  <p><a href="index.html">Main index</a></p>
+  <p>Next:<br><a href="lesson4.html">Doing useful things</a></p>
+</nav>
+
+<p>In this part of the course, we'll look at conditions and loops; as before, make a new copy of the <a href="javascript-examples/template.html">template.html</a> file and open it in your browser and text editor.</p>
+
+<h2>Conditional logic</h2>
+
+<p>Another very significant part of programming is conditional logic: performing different actions depending on user choices, differences in environment, etc. You might want to reveal whether an answer to a quiz question is correct or not, or do different things depending on different keys being pressed on the keyboard.</p>
+
+<p>Conditional logic is usually done inside an <code>if … else</code> structure (although there are other ways). Let's type in a simple example into the JavaScript area of our tempate file (also see my <a href="javascript-examples/conditional.html">conditional example</a> for a finished version):</p>
+
+<pre><code class="language-javascript">var myTown = prompt("Enter your home town or city");
+
+if(myTown === "Manchester") {
+  // At each stage here we are doing a test to see if
+  //the myTown variable is equal to a certain value
+  alert("Is it still raining in Manchester?");
+  // the code inside the curly braces is run if the
+  //associated test returns true
+} else if(myTown === "Barcelona") {
+  // else if is how we chain another possibility on to the
+  // end of the block
+  alert("You have beautiful architecture, and sun");
+} else {
+  // else is basically the last resort if none of the other
+  // tests return true
+  alert("I don't know your home town very well");
+};</code></pre>
+
+<p>Each stage of this structure tests a condition, and depending on whether this condition is <code>true</code>, you get a different result. If the condition is <code>true</code>, the code inside the curly braces executes; if not it moves on to the next condition test.</p>
+
+<p>Now try the following:</p>
+
+<pre><code class="language-javascript">var myTown = prompt("Enter your home town or city");
+
+if(myTown === "Manchester") {
+  alert("Is it still raining in Manchester?");
+}
+
+alert("I don't know your home town very well");</code></pre>
+
+<p>This still runs because the browser just keeps moving through the code sequentially. But there is a problem. What goes wrong here when you enter your <code>myTown</code> variable value as <code>Manchester</code> when prompted?</p>
+
+<div class="exercise">
+  <h3>Exercise: Building onto our conditional code</h3>
+
+  <p>In this exercise, try adding some further conditions onto our existing code, to make it able to respond in more different ways when different town options are entered. Remember that for the first condition you need to write <code>if() {}</code>, for further conditions you need to write <code>else if() {}</code>, and then for your final default condition you just need to write <code>else {}</code>.</p>
+
+  <p>If you get stuck, check that:</p>
+
+  <ol>
+    <li>You have closed quoted sections with a second quote mark.</li>
+    <li>You have included semi colons at the end of the "action" lines (e.g. alerts and prompts)</li>
+    <li>You haven't confused a single equals sign with a triple equals sign. Single equals is the assignment operator, and you use that to make something equal to something else ("x now equals y!") Triple equals is the strict equality operator, which is used to check whether something is equal to something else ("is x equal to y?")</li>
+  </ol>
+</div>
+
+<p>If you want to create a response based on a combination of different conditions, you have a couple of choices. First of all, you can use the OR and AND operators to make an <code>if ... else</code> statement return true if or one or more conditions are true. For example, here's an OR operator being put to use (run the code if <code>myTown</code> equals <code>Manchester</code> OR <code>Bradford</code>):</p>
+
+<pre><code class="language-javascript">if(myTown === "Manchester" || myTown === "Bradford") {
+  alert("It is rainy in those Northern towns.");
+}</code></pre>
+
+<p>And now an AND operator (run the code if <code>myTown</code> equals <code>Manchester</code> AND <code>mySeason</code> equals <code>Summer</code>):</p>
+
+<pre><code class="language-javascript">if(myTown === "Manchester" && mySeason === "Summer") {
+  alert("Manchester must be enjoying some warmer weather.");
+}</code></pre>
+
+<p>There is also nothing to stop you from nesting <code>if ... else</code> structures. For example:</p>
+
+<pre><code class="language-javascript">if(myTown === "Manchester") {
+  if(mySeason === "Summer") {
+    alert("Manchester must be enjoying some warmer weather.");
+  } else if(mySeason === "Winter") {
+    alert("Poor you! Must be really cold in Manchester
+           at the moment!");
+  } else {
+    alert("Is it raining in Manchester?");
+  }
+};</code></pre>
+
+<div class="exercise">
+  <h3>Exercise: advanced conditionals</h3>
+
+  <p>Now try using some AND and OR operators in your program, and/or a nested conditional.</p>
+
+</div>
+
+<h2>Loops</h2>
+
+<p>Often you will want to do the same thing multiple times, perhaps changing the result a little bit each time. It is really tedious to write out loads of similar lines one after the other, so programming languages tend to provide loops to automate this for you. Let's say we wanted to make a number guessing game, where the program stores a number between 1 and 100 and then you have 20 guesses to get it right. Writing out the same code 20 times, once for each guess would be really tedious:
+
+<pre><code class="language-javascript">var theAnswer = 72;
+
+// guess 1;
+
+var guess = prompt("Enter a guess");
+
+if(guess == theAnswer) {
+  ...
+}
+
+// guess 2
+
+...
+
+// guess 3
+
+etc.</code></pre>
+
+<p>A much better way to do this would be to use a for loop, the general structure of which looks like this:</p>
+
+<pre><code class="language-javascript">for(i = 0; i &lt;= 20 ; i++) {
+  // code in here can handle guesses 1 - 10, which become
+  // guess i in variable terms
+}</code></pre>
+
+<p>Loops nearly always involve a single variable being iterated a certain number of times during the course of the loop. This can be called anything you like, but standard convention dictates that it be called <code>i</code>, mainly due to laziness!</p>
+
+<p>Inside the <code>for()</code> brackets you have three values separated by semi-colons:</p>
+
+<ol>
+  <li><code>i = 0</code> — this is the starting value of the variable to be iterated.</li>
+  <li><code>i &lt;= 20</code> — this is the "exit condition" of the loop. So in this case, the loop will stop when <code>i</code> is no longer less than or equal to 10. When the value of <code>i</code> hits 11 the loop stops iterating, and the browser moves on to whatever comes next in the code. The loop needs an exit condition; if it didn't have one, the loop would never end, and the browser would just keep running the loop forever until it crashed. This is called an "infinite loop".</li>
+  <li><code>i++</code> — this is the "iterator". Each time the loop has finished running, the iterator modifies the value of <code>i</code> in some way and then the loop is run again (unless of course that iteration is the last one, and the loop doesn't run again). <code>i++</code> means "add 1 to i each time", and is shorthand for <code>i = i + 1</code>.</li>
+</ol>
+
+<div class="exercise">
+<h3>Exercise: Implementing a basic loop</h3>
+<p>Soon we'll try to build the game described above ourselves, but first let's look at a simple real example that outputs the numbers 1 - 20 into the console pane.</p>
+
+<pre><code class="language-javascript">for(i = 1; i <= 20 ; i++) {
+  console.log(i);
+}</code></pre>
+
+<p>Try putting this into the JavaScript section of your template. Save and reload as before, then open the browser console pane so you can see the <code>console.log</code> output.</p>
+
+<p>This code is the equivalent of writing:</p>
+
+<pre><code class="language-javascript">console.log(1);
+console.log(2);
+console.log(3);
+console.log(4);
+console.log(5);
+console.log(6);
+console.log(7);
+console.log(8);
+console.log(9);
+console.log(10);
+console.log(11);
+console.log(12);
+console.log(13);
+console.log(14);
+console.log(15);
+console.log(16);
+console.log(17);
+console.log(18);
+console.log(19);
+console.log(20);</code></pre>
+
+<p>This reiterates how much more convenient loops can be for doing repetitive tasks!</p>
+</div>
+
+<div class="exercise">
+  <h3>Exercise: building a number guessing game</h3>
+
+  <p>Ok, so the time has come for us to try working out how to build a simple game. Along the way I'll start introducing you to the idea of "thinking like a programmer." This is quite hard to come to terms to, but once you start to get it, you will find that the rest comes more easily.</p>
+
+  <p>Let's revisit my product description from earlier:</p>
+
+  <blockquote><p>A number guessing game, where the program stores a number between 1 and 100 and then you have 10 guesses to get it right.</p></blockquote>
+
+  <p>To start thinking like a programmer, you need to break this down into statements of what the program needs to do to succeed.</p>
+
+  <ol>
+    <li>Program needs to store a random number, 1-100.</li>
+    <li>Program needs to give the user 10 guesses to get this right.</li>
+    <li>The user needs to know whether they have got it right or not.</li>
+  </ol>
+
+<p>So how do we then take these and turn them into code? Let's go through them one by one.</p>
+
+<h4>Program needs to store a random number, 1-100.</h4>
+
+<p>This is how the program determines what the right answer is, in each game. This really ought to happen at the start of the game, before the guesses happen, so let's write this first. JavaScript has a built-in function that generates a random number between 0 and 1: <code>Math.random()</code>.</p>
+
+<ol>
+  <li>Wrap the following in a <code>console.log()</code> statement so we can see what it's doing.</li>
+  <pre>console.log(Math.random());</pre>
+  <li>We need to make it generate a number between 1 and 100. Let's multiply it by something to make the random number bigger.</li>
+  <pre>console.log(Math.random() * 100);</pre>
+  <li>This gives us a random number between 0-99: the random number generated doesn't include 100. We need 1-100</li>
+  <pre>console.log((Math.random() * 99) + 1);</pre>
+  <li>But this number is a decimal, plus it might give us slightly more than 100. We want whole numbers! Fortunately JavaScript has a built-in function called <code>Math.floor()</code>, which rounds its input down to the nearest whole number. How do we use this?</li>
+  <pre>console.log(Math.floor(Math.random() * 99) + 1);</pre>
+  <li>Let's refresh the browser with the console open to test it a few times.</li>
+  <li>We need to store this in a variable, rather than output it to the console. Update the line like so:</li>
+  <pre>var randomNumber = Math.floor(Math.random() * 99) + 1</pre>
+</ol>
+
+<h4>Program needs to give the user 10 guesses to get this right</h4>
+
+<p>This sounds like a job for a for loop, right? What have we just been talking about?</p>
+
+<ol>
+  <li>Let's add an empty for loop below our previous line of code</li>
+  <pre><code class="language-javascript">for() {
+  
+}</code></pre>
+  <li>Now we need to work out what the starting condition, exit condition and iterator are. We want to start at guess 1, stop providing guesses when the guess count reaches 10, and increase the guess count by 1 each time.</li>
+  <pre><code class="language-javascript">for(i = 1; i <= 10 ; i++) {
+  
+}</code></pre>
+  <li>So next, what do we need to do inside the loop? Well, we ought to think about how to let our user take a guess. What have we used in the past to allow the user the enter something?</li>
+<pre><code class="language-javascript">for(i = 1; i <= 10 ; i++) {
+  var userGuess = prompt("Enter guess " + i);
+}</code></pre>
+</ol>
+
+<h4>The user needs to know whether they have got it right or not</h4>
+
+<ol>
+  <li>Now we should check whether the guess is correct. What structure can we use to do this?</li>
+<pre><code class="language-javascript">for(i = 1; i <= 10 ; i++) {
+  var userGuess = prompt("Enter guess " + i);
+
+  if() {
+
+  } else {
+
+  }
+}</code></pre>
+
+<li>What condition do we put in here?</li>
+
+<pre><code class="language-javascript">for(i = 1; i <= 10 ; i++) {
+  var userGuess = prompt("Enter guess " + i);
+
+  if(userGuess = randomNumber) {
+
+  } else {
+
+  }
+}</code></pre>
+
+  <li>Let's alert the user to tell them whether they got it right or not. How can we do this?</li>
+
+<pre><code class="language-javascript">for(i = 1; i <= 10 ; i++) {
+  var userGuess = prompt("Enter guess " + i);
+
+  if(userGuess == randomNumber) {
+    alert("Congratulations. You got it right!");
+  } else {
+    alert("wrong");
+  }
+}</code></pre>
+</ol>
+
+<h3>Advanced additions</h3>
+
+<p>First of all, the game would be a lot fairer if we could tell the user whether each guess is too high or too low.</p>
+
+<pre><code class="language-javascript">for(i = 1; i <= 10 ; i++) {
+  var userGuess = prompt("Enter guess " + i);
+
+  if(userGuess == randomNumber) {
+    alert("Congratulations. You got it right!");
+  } else {
+    alert("wrong");
+    <strong>if(userGuess < randomNumber) {
+      alert("Your guess is too low!");
+    } else if(userGuess > randomNumber) {
+      alert("Your guess is too high!");
+    }</strong>
+  }
+}</code></pre>
+
+<p>Also, the guesses should stop if the user guesses the correct number before the 10th guess.</p>
+
+<pre><code class="language-javascript">for(i = 1; i <= 10 ; i++) {
+  var userGuess = prompt("Enter guess " + i);
+
+  if(userGuess == randomNumber) {
+    alert("Congratulations. You got it right!");
+    <strong>break;</strong>
+  } else {
+    alert("wrong");
+    if(userGuess < randomNumber) {
+      alert("Your guess is too low!");
+    } else if(userGuess > randomNumber) {
+      alert("Your guess is too high!");
+    }
+  }
+}</code></pre>
+
+</div>
+
+<nav>
+  <p>Previous:<br><a href="lesson2.html">Variables</a></p>
+  <p><a href="index.html">Main index</a></p>
+  <p>Next:<br><a href="lesson4.html">Doing useful things</a></p>
+</nav>
+
+<hr>
+<p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. Share it, make it better, use it for good.</p>
+   
+  </main>
+
+  </body>
+
+  <script src="prism/prism.js"></script>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Number multiplier</title>
+
+    <link rel="stylesheet" href="">
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+      <h1>Number multiplier</h1>
+
+<div class="form">
+  <label for="number1">First number: </label><input type="text" id="number1">
+  <label for="number2">Second number: </label><input type="text" id="number2">
+</div>
+
+<p id="result">The result is</p>
+  </body>
+
+  <script>
+
+    var result = document.getElementById("result");
+
+    var input1 = document.getElementById("number1");
+    var input2 = document.getElementById("number2");
+    
+    function multiply() {
+      var number1 = input1.value;
+      var number2 = input2.value;
+      var value = number1 * number2;
+      result.innerHTML = "The result is " + value;
+    }
+
+    input1.onblur = multiply;
+    input2.onblur = multiply;
+ 
+  </script>
+</html>

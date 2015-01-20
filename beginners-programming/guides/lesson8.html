@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Introduction to programming, Part 8</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="prism/prism.css">
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+  <main>
+
+    <hgroup>
+      <h1>Introduction to programming</h1>
+      <h2>More challenges</h2>
+    </hgroup>
+
+<nav>
+  <p>Previous:<br><a href="lesson7.html">Further improving our guessing game with events</a></p>
+  <p><a href="index.html">Main index</a></p>
+  <p>Next:<br><a href="lesson9.html">Objects and going further</a></p>
+</nav>
+
+
+<p>In this part of the series we are going to have a go at build one or two little standalone projects, which will give you some coding practice, introduce a couple of new concepts, and hopefully give you some fun at the same time.</p>
+
+<h2>A shopping list</h2>
+
+<p>The first example we'll look at is a simple little program that allows you to enter items into an input field and then submit them to add them to a list that appears below. The final working example can be seen at <a href="javascript-examples/shopping-list.html">My shopping list</a> — but no peeking at the code until you've tried it yourself!</p>
+
+<h3>The brief</h3>
+
+<ul>
+  <li>Interface should contain a form input field and two buttons — Submit item and Clear items.</li>
+  <li>When an item is entered in the form input and Submit item is clicked, then item should clear out of the form field and be added to an unordered list.</li>
+  <li>When the Clear items button is pressed, then the listed items should be deleted, and anything in the form input should be cleared out.</li>
+</ul>
+
+<h3>New things in this challenge</h3>
+
+<p>We have already seen how you can alter the content of an HTML element by capturing the element in a variable using something like</p>
+
+<pre><code class="language-javascript">var element = document.getElementById("elementId");</code></pre>
+
+<p>and then setting the <code>innerHTML</code> property of that variable to anything you like:</p>
+
+<pre><code class="language-javascript">element.innerHTML = "Hello!";</code></pre>
+
+<p>Well, you can also create new HTML elements from nothing, using the <code>document.createElement()</code> method and passing it an element name. For example:</p>
+
+<pre><code class="language-javascript">var myNewElement = document.createElement("p");</code></pre>
+
+<p>You can then do many things with this element, but in this case we are going to look at ading the element to the document inside another element. For example:</p>
+
+<pre><code class="language-javascript">var myExistingElement = document.getElementById("myDiv");
+myNewElement.innerHTML = "My paragraph now has some content!";
+myExistingElement.appendChild(myNewElement);</code></pre>
+
+<p>This would result in the following HTML now existing in the page:</p>
+
+<pre><code class="language-markup">&lt;div id="myExistingElement"&gt;
+&lt;!-- This div element was already in the HTML --&gt;
+  &lt;p&gt;My paragraph now has some content!&lt;/p&gt;
+  &lt;!-- This p element was created by JavaScript --&gt;
+&lt;/div&gt;</code></pre>
+
+<h3>Let's do it</h3>
+
+<ol>
+  <li>As a first step, let's add some HTML inside our HTML <code>&lt;body&gt;&lt;/body&gt;</code>. I'll give you this for free, as it's not really the point of the course to teach you HTML.</li>
+
+<pre><code class="language-markup">&lt;div class="form"&gt;
+  &lt;label for="item"&gt;Add item to list: &lt;/label&gt;
+  &lt;input type="text" id="item"&gt;
+  &lt;button id="submit"&gt;Submit item&lt;/button&gt;
+  &lt;button id="clear"&gt;Clear items&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;ul id="list"&gt;
+
+&lt;/ul&gt;</code></pre>
+
+  <li>Now we need to grab all of the items we want to do stuff to and store them in variables. We ought to grab the form input, both buttons, and the empty unordered list (<code>ul</code>) element:</li>
+
+<pre><code class="language-javascript">var itemInput = document.getElementById("item");
+   var clear = document.getElementById("clear");
+   var submit = document.getElementById("submit");
+   var list = document.getElementById("list");</code></pre>
+
+  <li>Next, we need a function that will grab whatever value is inside the form input at the time it is run, and put it inside a list item (<code>li</code> element) inside the unordered list. This should happen when the Submit button is clicked. Inside our function we need to:
+    <ul>
+      <li>Store the current value of the form input in a value (remember we can access the value with <code>formElement.value</code>).</li>
+      <li>Create a new list item (<code>li</code> element) using <code>document.createElement()</code>, like we discussed above.</li>
+      <li>Set the value of the list item's <code>innerHTML</code> to the form input value we captured in the above step.</li>
+      <li>Append the list item as a child of the unordered list using <code>appendChild()</code>, like we discussed above.</li>
+      <li>Set the value of the form input to equal an empty string ("").</li>
+      <li>Outside the function we need to attach an <code>onclick</code> event handler to the submit button so it runs the function we just wrote when it is clicked.</li>
+    </ul>
+  </li>
+
+<pre><code class="language-javascript">function addItem() {
+     var currentItem = itemInput.value;
+     var listItem = document.createElement("li");
+     listItem.innerHTML = currentItem;
+
+     list.appendChild(listItem);
+
+     itemInput.value = "";
+}
+
+submit.onclick = addItem;</code></pre>
+
+  <li>The only other major bit of work is to create a function that deletes the existing list items and empties the form input element when the clear button is clicked. to do this, we need to create a function that
+    <ul>
+      <li>Sets the <code>innerHTML</code> of the unordered list to nothing ("")</li>
+      <li>Set the value of the form input to equal an empty string ("").</li>
+    </ul>
+  
+  </li>
+
+<pre><code class="language-javascript">clear.onclick = function() {
+     list.innerHTML = "";
+     itemInput.value = "";
+   }</code></pre>
+</ol>
+
+<p>You'll notice in my final code that I used an anonymous function for this second part, and just attached it directly to the <code>onclick</code> handler. But you could do it a different way if you like.</p>
+
+<h2>A text search app</h2>
+
+<p>Our second example is slightly more complex, and highlights one of the main uses of JavaScript: processing text. In this demo we will create an fairly simple app that will take a big chunk of text you feed into it and a search term, search through it, and then highlight where the search term appears in the chunk of text.</p>
+
+<h3>The brief</h3>
+
+<ul>
+  <li>The user interface should contain a big text area to enter the block of text to be searched through, a text input to enter the search term into, and two buttons, one to perform the search and one to clear the entries and start again.</li>
+  <li>When the Search button is pressed and nothing has been entered into one of both of the text entry fields, the user should be told to enter some text and try again!</li>
+  <li>When the Search button is pressed and text has been entered into both text entry fields:
+    <ul>
+      <li>If the search term is matched in the main text block, it will be highlighted in a new version of the text, printed at the bottom of the display. A message will appear to tell the user this</li>
+      <li>If not, a message will be displayed telling the user that no results were found</li>
+    </ul>
+  </li>
+  <li>When the Clear button is pressed, the text entry fields, the message and the results will all be cleared, resetting the application</li>
+</ul>
+
+<p>When looking at a brief like this, it helps to examine what is needed, and write out a list of all the items, so we are clear:</p>
+
+<ul>
+  <li>A big text area</li>
+  <li>A single line text input</li>
+  <li>A Search button</li>
+  <li>A Clear button</li>
+  <li>A container to display the result messages in</li>
+  <li>A container to display the actual search results with the highlighted search terms</li>
+</ul>
+
+<p>Grabbing a piece of paper and sketching out a rouch mock of the thing you are about to build can also be tremendously helpful.</p>
+
+<h3>New things in this challenge</h3>
+
+<p>JavaScript contains many built in features for manipulating strings. As a simple example that we've already seen, how about this:</p>
+
+<pre><code class="language-javascript">var myName = "Chris";
+var myAge = 35;
+
+alert("My name is " + myName + " and I am " + myAge + " years old.");</code></pre>
+
+<p>Here we are concatenating some raw text strings and variable values together to make one big string. But we can go a lot further than this. Here we'll be using two new string manipulation functions.</p>
+
+<p>The first one is called <code>indexOf()</code>, and it finds an instance of one string inside another. For example:</p>
+
+<pre><code class="language-javascript">var result = "My name is Chris".indexOf("Chris");</code></pre>
+
+<p>So here we are writing out a string, then invoking the <code>indexOf()</code> function of the string, with an argument of <code>"Chris"</code>. This causes the browser to search through the string, check whether "Chris" appears inside the string, and store the position that it appears in, in the <code>result</code> variable. The result should be 11, because "Chris" starts (the letter "C" appears) at character 12 of the string (remember that computers start counting from 0, not 1).</p>
+
+<p class="note">If the <code>indexOf()</code> argument is not found in the string, it will return a result of -1. This is pretty useful, as we shall see later.</p>
+
+<p>The second new feature is called <code>replace()</code>. This is a function that allows you to replace parts of a string with something else, and then return the updated string. For example:</p>
+
+<pre><code class="language-javascript">var result = "My name is Chris".replace("Chris", "Bob");</code></pre>
+
+<p>Here we are writing out a string, then invoking the <code>replace()</code> function of the string. In this case it is taking two arguments, the string we want to find ("Chris") and the string we want to replace it with ("Bob"). The replacement is caried out, and the updated string is stored in the <code>result</code> variable. The result should be "My name is Bob".</p>
+
+<p><code>replace()</code> can also take an optional third argument containing a regular expression, which sets some rules about how the replacement should occur, for example if you want to ignore case sensitivity, or replace all instances of a string or just one. These are pretty complicated so I won't be covering these in detail; the only one I'll be covering is the "g" option, which causes the <code>replace()</code> function to replace all instances of the replace string, not just the first one. So for example, try this:</p>
+
+<pre><code class="language-javascript">var result1 = "My name is Chris Chris Chris".replace("Chris", "Bob");
+var result2 = "My name is Chris Chris Chris".replace("Chris", "Bob", "g");</code></pre>
+
+<p><code>result1</code> should be equal to "My name is Bob Chris Chris", while result2 should be "My name is Bob Bob Bob".</p>
+
+<h3>Let's do it</h3>
+
+<p>Ok, so let's get to it, and build this thing. Again start with a new JSBin window. In the HTML pane, inside the <code>&lt;body&gt;&lt;/body&gt;</code> put the following HTML:</p>
+
+<pre><code class="language-markup">&lt;div class="form"&gt;
+  &lt;div&gt;
+    &lt;label for="text"&gt;Enter your text to search: &lt;/label&gt;&lt;textarea id="text" cols="80" rows="15"&gt;&lt;/textarea&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;label for="searchString"&gt;Enter text to search for: &lt;/label&gt;&lt;input type="text" id="searchString"&gt;
+  &lt;/div&gt;
+  &lt;button id="submit"&gt;Search&lt;/button&gt;&lt;button id="clear"&gt;Clear&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;p id="resultMessage"&gt;&lt;/p&gt;
+&lt;p id="results"&gt;&lt;/p&gt;</code></pre>
+
+<p>Now we'll go through the following steps, writing the JavaScript in the JavaScript pane:</p>
+
+<ol>
+  <li>First we'll capture both buttons and the two paragraphs at the bottom of the HTML in variables:</li>
+
+<pre><code class="language-javascript">var searchButton = document.getElementById("submit");
+var clearButton = document.getElementById("clear");
+
+var resultMessage = document.getElementById("resultMessage");
+var results = document.getElementById("results");</code></pre>
+
+  <li>The next task is the biggest and most difficult part of the application. We now need to write a central function that carries out the main search and result reporting tasks. First, create an empty function:</li>
+
+<pre><code class="language-javascript">function runSearch() {
+}</code></pre>
+
+  <li>Inside this function, grab the current text values inside the <code>textarea</code> element and the text <code>input</code> element and store them in variables</li>
+
+<pre><code class="language-javascript">var text = document.getElementById("text").value;
+var searchString = document.getElementById("searchString").value;</code></pre>
+
+  <li>Then use the <code>indexOf()</code> function we explored earlier to check whether the <code>searchString</code> is contained inside the <code>text</code>, and store the result in a variable.</li>
+
+<pre><code class="language-javascript">var confirmResult = text.indexOf(searchString);</code></pre>
+
+  <li>Next you need to create an if...else structure that gives the user a message if the <code>searchString</code> or the <code>text</code> or both are empty, to tell them to fill in the text boxes. If this is not the case, we will do something else (to be covered below.)</li>
+
+<pre><code class="language-javascript">if(text == "" || searchString == "") {
+  resultMessage.innerHTML = "You need to enter a search term and block of text to search!";
+} else {
+  
+}</code></pre>
+
+  <li>Now we will look at what needs to go inside the else part of the code. First we need to nest another if ... else structure inside this block. We need to do something magical if the <code>indexOf()</code> test says that the <code>searchString</code> is found inside the text (which we'll cover in the next step). If it isn't, then we want to give the user a message to tell them that the search term has not been found in the text block, and clear the contents of the <code>results</code> paragraph (in case anything was sat there from previous searches.)</li>
+
+<pre><code class="language-javascript">if(text == "" || searchString == "") {
+  resultMessage.innerHTML = "You need to enter a search term and block of text to search!";
+} else {
+  <strong>if(confirmResult != -1) {
+
+  } else {
+    resultMessage.innerHTML = "Your search term has not been found in the text";
+    results.innerHTML = "";
+  }</strong>
+}</code></pre>
+
+  <li>Finally for this function, we need to fill in our second <code>if() {}</code> block. If <code>confirmResult</code> doesn't have a value of -1, it means that the <code>searchString</code> has been found in the <code>text</code> block, so we need to find where, and highlight all instances.</li>
+
+<pre><code class="language-javascript">if(text == "" || searchString == "") {
+  resultMessage.innerHTML = "You need to enter a search term and block of text to search!";
+} else {
+  if(confirmResult != -1) {
+    <strong>var newText = text.replace(searchString, "&lt;strong&gt;" + searchString + "&lt;/strong&gt;", "g");
+
+    results.innerHTML = newText; 
+    resultMessage.innerHTML = "Search term highlighted in text";</strong>
+
+  } else {
+    resultMessage.innerHTML = "Your search term has not been found in the text";
+    results.innerHTML = "";
+  }
+}</code></pre>
+
+  <li>We also need a function that will clear everything out, effectively resetting the whole app. You need to empty both form fields (<code>input</code> and <code>textarea</code>), and empty both paragraphs (<code>resultsMessage</code> and <code>results</code>.)</li>
+
+<pre><code class="language-javascript">function clearFields() {
+  document.getElementById("text").value = "";
+  document.getElementById("searchString").value = "";
+
+  resultMessage.innerHTML = "";
+  results.innerHTML = "";
+}</code></pre>
+
+  <li>The last step is to add <code>onclick</code> handlers to the Search and Clear buttons so that they run the two functions we just wrote. This is the easy bit!</li>
+
+<pre><code class="language-javascript">searchButton.onclick = runSearch;
+clearButton.onclick = clearFields;</code></pre>
+</ol>
+
+
+<nav>
+  <p>Previous:<br><a href="lesson7.html">Further improving our guessing game with events</a></p>
+  <p><a href="index.html">Main index</a></p>
+  <p>Next:<br><a href="lesson9.html">Objects and going further</a></p>
+</nav>
+
+
+<hr>
+<p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. Share it, make it better, use it for good.</p>
+   
+  </main>
+  </body>
+
+  <script src="prism/prism.js"></script>
+</html>
