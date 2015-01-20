@@ -125,7 +125,7 @@ alert("I don't know your home town very well");</code></pre>
 
 var guess = prompt("Enter a guess");
 
-if(guess == theAnswer) {
+if(guess === theAnswer) {
   ...
 }
 
@@ -277,7 +277,7 @@ console.log(20);</code></pre>
 <pre><code class="language-javascript">for(i = 1; i <= 10 ; i++) {
   var userGuess = prompt("Enter guess " + i);
 
-  if(userGuess == randomNumber) {
+  if(userGuess === randomNumber) {
     alert("Congratulations. You got it right!");
   } else {
     alert("wrong");
@@ -292,7 +292,7 @@ console.log(20);</code></pre>
 <pre><code class="language-javascript">for(i = 1; i <= 10 ; i++) {
   var userGuess = prompt("Enter guess " + i);
 
-  if(userGuess == randomNumber) {
+  if(userGuess === randomNumber) {
     alert("Congratulations. You got it right!");
   } else {
     alert("wrong");
@@ -309,7 +309,7 @@ console.log(20);</code></pre>
 <pre><code class="language-javascript">for(i = 1; i <= 10 ; i++) {
   var userGuess = prompt("Enter guess " + i);
 
-  if(userGuess == randomNumber) {
+  if(userGuess === randomNumber) {
     alert("Congratulations. You got it right!");
     <strong>break;</strong>
   } else {

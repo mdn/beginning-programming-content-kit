@@ -60,7 +60,7 @@
 for(i = 1; i <= 10 ; i++) {
   var userGuess = prompt("Enter guess " + i);
 
-  if(userGuess == randomNumber) {
+  if(userGuess === randomNumber) {
     alert("Congratulations. You got it right!");
     break;
   } else {
@@ -120,7 +120,7 @@ for(i = 1; i <= 10 ; i++) {
   var userGuess = prompt("Enter guess " + i);
   guesses.innerHTML += userGuess + " ";
 
-  if(userGuess == randomNumber) {
+  if(userGuess === randomNumber) {
     <strong>lastResult.innerHTML = "Congratulations! You got it right!";
     lowOrHi.innerHTML = "";</strong>
     break;
