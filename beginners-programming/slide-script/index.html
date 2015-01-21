@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Beginners programming slide notes</title>
+
+    <link rel="stylesheet" href="../guides/style.css">
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <hgroup>
+      <h1>Slide notes for Beginners Programming</h1>
+    </hgroup>
+
+    <ol class="slide-notes">
+      <li><strong>Title slide</strong>: Hello and welcome</li>
+      <li><strong>Table of contents</strong>: This is what we will cover in this workshop</li>
+      <li><strong>Intro</strong></li>
+      <li><strong>Code is just another language</strong>: When we want to talk to humans and give them instructions, we use a human language, like English, Chinese or Urdu. When we want to talk to computers and give them instructions, we use code. JavaScript in particular is code that talks to a web browser</li>
+      <li><strong>JavaScript is interpreted</strong>: By the JavaScript engine inside the web browser. JavaScript, and other languages like HTML and CSS, are interpreted to output web pages that a computer user can use.</li>
+      <li><strong>How the Web works</strong>:
+        <ul>
+          <li>When a web user types a web address into their address bar or follows a link, their browser requests the web page from the server it is stored on.</li>
+          <li>If the request is successful, the server sends the web page files (code, images, etc.) back to the browser</li>
+          <li>The browser turns all these files into a web page and shows it to the user.</li>
+        </ul>
+      </li>
+      <li><strong>Server-side vs client-side</strong>: Server-side code is run on the server, and the result is then sent to the client and displayed. Think of the code that finds the results when you do an Amazon search. Client-side code on the other hand is sent to the client as is, then interpreted by the client and displayed. We are only covering client-side code in this course.</li>
+      <li><strong>HTML</strong>: HTML is the language you use to structure your page content and give it meaning. HTML is composed of elements: tags that wrap around content.</li>
+      <li><strong>CSS</strong>: CSS is the language you use specify what you want your content to look like. It is made up of rules that select element to style, and change their style properties to new values.</li>
+      <li><strong>JavaScript</strong>: The JavaScript language is comprised of objects that you manipulate to create exciting dynamic functionality on web pages. Programming for the Web.</li>
+      <li><strong>Browser developer tools</strong>: Every browser has a set of developer tools that can be used to solve problems with web site code (fix bugs). These include a console that can be used to directly test the page's JavaScript. Developer tools are accessed using Ctrl + Shift + I (Cmd + Opt + I on Mac OSX, F12 on Internet Explorer)</li>
+      <li><strong>Variables</strong></li>
+      <li><strong>Variables</strong>: You create a variable using the <code>var</code> keyword, followed by the variable name you choose. You assign a variable using the assignment operator, for example <code>myVariable = "Chris"</code>. You can assign the variable different values after it has been created.</li>
+      <li><strong>Common variable data types</strong>: An integer is a whole number value, and is assigned without quote. A string is a series of characters, and must be surrounded in quotes. A boolean is a <code>true</code>/<code>false</code> value. Arrays and other objects return a data type of <code>object</code>.</li>
+      <li><strong>Syntax rules</strong>: There are various syntax rules you need to remember about JavaScript. The most important ones are listed here.</li>
+      <li><strong>Operators</strong>: These slides list the most common JS operators. Most of these are obvious. <code>+</code> is used to add numbers together and join strings together. Modulo returns the remainder after one number is divided by another, and is mainly useful for detecting whether a number is even or odd. For example, <code>4 % 2</code> is 0, as 2 divides exactly into 4. <code>5 % 2</code> is 1, as 2 divides into 5 twice, with 1 left over.</li>
+      <li><strong>Operators</strong>: These operators are mostly used to compare values (comparison operators). We've already seen assignment, and we'll see a lot more of the others later in the  course. For example, <code>&lt;</code> tests whether one value is less than another — <code>3 &lt; 5</code> returns <code>true</code>, because 3 <strong>is</strong> less than 5.</li>
+      <li><strong>Operator precedence</strong> is the order in which operators are executed in a sum. Division/multiplication are executed first, then addition/subtraction. This is why <code>8 + 4 / 3 * 4</code> perhaps doesn't return the result you thought it might. The divide is run first, then the multiply, then finally the addition. You can force the order using brackets, for example <code>(8 + 4) / (3 * 4)</code></li>
+      <li><strong>Conditions and loops</strong></li>
+      <li><strong>Conditional code</strong> allows us to test a condition (for example <code>5 &lt; 3</code>.) If the condition returns <code>true</code> then one block of code will be run. If it returns <code>false</code>, something else will happen. Let's look at the code structure.</li>
+      <li><strong>if ... else pseudocode</strong>: The basic <code>if ... else</code> code structure looks like this.</li>
+      <li><strong>if ... else example</strong>: and here is a real code example. Here we prompt the user to enter a town/city name. If they enter "Manchester" then they'll see the first alert message. If they enter anything else, they'll see the second alert.</li>
+      <li><strong>if ... else if ... else example</strong>: <code>else if() {}</code> is used to chain a further condition check onto the code block.</li>
+      <li><strong>logical OR and AND</strong>: As you can see in the code examples, these operators can be used to create a conditional check where either or both conditions need to return <code>true</code> before the overall condition will return <code>true</code>.</li>
+      <li><strong>Nesting if ... else</strong>: This is just fine.</li>
+      <li><strong>Loops</strong>: These code structures allow you to run the same code several times, updating part of the code each time to iterate through a set of data for example.</li>
+      <li><strong>For loop pseudocode</strong>: The for loop structure looks like this.</li>
+      <li><strong>For loop features</strong>
+        <ul>
+          <li><code>i</code> — variable</li>
+          <li><em>starting value</em> — what <code>i</code> begins at</li>
+          <li><em>exit-condition</em> — what value <code>i</code> has to be for the loop to keep running</li>
+          <li><em>iterator</em> — how <code>i</code> changes each time the loop is run</li>
+          <li><em>Run code</em> — the code run each time the loop runs</li>
+		</ul>
+      </li>
+      <li><strong>For loop example</strong>: Here is a real for loop example.</li>
+      <li><strong>Document Object Model</strong></li>
+      <li><strong>The browser converts HTML to a DOM tree</strong>: The Document node is the top node in the tree. Then all the elements in your page are converted into nodes, which form a hierarchy based on how they are nested. The html node is top, then the head and body, then the elements inside those.</li>
+      <li><strong>JavaScript and CSS accessing the DOM</strong>: When you used CSS and JavaScript to affect nodes in the DOM, they walk up and down the tree until they find the element(s) they want. </li>
+      <li><strong>Example: JavaScript updating element contents</strong>: In this example, we grab a reference to the <code>&lt;h1&gt;</code> element using the <code>document.querySelector()</code> function, then store it in a variable called <code>myH1</code>. We then update the content inside the element by setting a new value for <code>myH1</code>'s <code>innerHTML</code> property.</li>
+      <li><strong>Canvas</strong></li>
+      <li><strong>Canvas is</strong> a way to script images using JavaScript. This doesn't sound very impressive to begin with, but you can do a lot with this, such as coding games inside the browser.</li>
+      <li><strong>Create a canvas + get a context</strong>: To manipulate a canvas, there are three steps to go through:
+        <ul>
+          <li>Put a <code>&lt;canvas&gt;</code> element onto your HTML page.</li>
+          <li>Grab a reference to that element and store it in a variable.</li>
+          <li>Use the <code>getContext()</code> function of the canvas variable to get a 2D drawing context; store this context in a variable. This can then be manipulated to update the <code>&lt;canvas&gt;</code> element.</li>
+        </ul>
+      </li>
+      <li><strong>Draw squares</strong>: it is easy to draw squares in canvas — <code>fillRect</code> and <code>strokeRect</code> allow you to draw filled and outline rectangles, respectively. Their four arguments are the x and y coordinates on the canvas, and the x and y dimensions. You cna use <code>fillStyle</code> and <code>strokeStyle</code> to set the colours the rectangles will be, and <code>lineWidth</code> will set the thickness of the stroke.</li>
+      <li><strong>Canvas loops</strong>: It doesn't take much imagination to start combining loops with drawing on a canvas, to create pretty patterns.</li>
+      <li><strong>More loop ideas</strong>: Here are some more ideas for you to try in your loops</li>
+      <li><strong>More loop ideas</strong>: And some more! Bear in mind that there is no easy primitive to draw a circle like there is for a rectangle, so you need to start a drawing path with <code>beginPath()</code>, draw a 360 degree <code>arc()</code>, and then end the drawing path with <code>fill()</code>.</li>
+      <li><strong>Functions</strong></li>
+    </ol>
+  </body>
+</html>
