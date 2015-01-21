@@ -54,22 +54,22 @@
 
     </div></section>
 
-    <section class="slide cover" id="Picture"><div>
+    <section class="slide cover" id="Picture1"><div>
 		<h2>Intro</h2>
 		<img src="pictures/picture.jpg" alt="">
 		<style>
-			#Picture h2 {
+			#Picture1 h2 {
 				color:#FFF;
 				}
 		</style>
 	</div></section>
 
 	<section class="slide"><div>
-		<h2>Code</h2>
+		<h2>Code is just another language</h2>
 		<ul>
 		  <li>Human language = talk to humans</li>
 		  <li>Programming = writing code</li>
-		  <li>Code = language, to talk to a computer</li>
+		  <li>Code = language to talk to a computer</li>
 		  <li>JavaScript = code that talks to a web browser</li>
 		</ul>
 	</div></section>
@@ -79,7 +79,6 @@
 		<ul>
 		  <li>JavaScript engine inside browser</li>
 		  <li>Browser turns code into web pages/apps</li>
-		  <li></li>
 		</ul>
 	</div></section>
 
@@ -94,191 +93,506 @@
 	</div></section>
 
 	<section class="slide"><div>
-		<h2>server-side vs client-side</h2>
+		<h2>Server-side vs client-side</h2>
 		<ul>
 		  <li><strong>Server-side code</strong>: runs on server, then result is sent to client</li>
 		  <li><strong>Client-side code</strong>: code sent to client, and runs on client</li>
 		</ul>
 	</div></section>
 
-    <section class="slide cover" id="Picture"><div>
+	<section class="slide"><div>
+		<h2>HTML</h2>
+		<ul>
+		  <li>Elements: e.g. <code>&lt;h1&gt;Example heading&lt;/h1&gt;</code></li>
+		  <li>Content structure and meaning</li>
+		</ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>CSS</h2>
+		<ul>
+		  <li>Rules: e.g. <code>h1 { color: red; }</code></li>
+		  <li>Styling content</li>
+		</ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>JavaScript</h2>
+		<ul>
+		  <li>Objects: e.g. <code>console.log('JavaScript test!');</code></li>
+		  <li>Programming for the Web</li>
+		  <li>Dynamic functionality</li>
+		</ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Browser developer tools</h2>
+		<ul>
+		  <li>Debugging and testing</li>
+		  <li><em>Ctrl + Shift + I</em> (<em>Cmd + Opt + I</em> on Mac OSX, <em>F12</em> on Internet Explorer)</li>
+		  <li>Run JavaScript in console</li>
+		</ul>
+	</div></section>
+
+
+
+
+    <section class="slide cover" id="Picture2"><div>
 		<h2>Variables</h2>
 		<img src="pictures/picture.jpg" alt="">
 		<style>
-			#Picture h2 {
+			#Picture2 h2 {
 				color:#FFF;
 				}
 		</style>
 	</div></section>
 
-	<section class="slide cover" id="Picture"><div>
+	<section class="slide"><div>
+		<h2>Variables</h2>
+
+		<p>Run these in the browser console</p>
+		<ul>
+		  <li>Containers for values</li>
+		  <li>Test — <code>myVariable</code> (undefined)</li>
+		  <li>Create — <code>var myVariable = 'Chris'</code></li>
+		  <li>Update — <code>myVariable = 'Bob'</code></li>
+		  <li>Test again — <code>myVariable</code> ('Bob')</li>
+		</ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Variable data types</h2>
+		<ul>
+		  <li>Integer, no quotes, e.g. <code>25</code></li>
+		  <li>String, in quotes, e.g. <code>"Chris"</code>. <code>"25"</code> is still a string</li>
+		  <li>Boolean — <code>true</code> or <code>false</code></li>
+		  <li>Array/Object — anything else</li>
+		</ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Syntax rules</h2>
+		<ul>
+		  <li><code>var</code> to declare variable</li>
+		  <li>Variable naming rules: no space, punctuation or reserved words/characters</li>
+		  <li>JavaScript is case sensitive: <code>myVariable</code> is not <code>myvariable</code></li>
+		  <li>Lines end with a semi-colon (;)</li>
+		  <li>Code block: <code>{ ... }</code></li>
+		</ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Operators</h2>
+		<ul>
+		  <li><code>+</code> — addition/concatenation</li>
+		  <li><code>-</code> — subtraction</li>
+		  <li><code>/</code> — division</li>
+          <li><code>*</code> — multiplication</li>
+          <li><code>%</code> — modulo</li>
+		</ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Operators</h2>
+		<ul>
+          <li><code>=</code> — assignment</li>
+		  <li><code>===</code> — strict equality/identity</li>
+		  <li><code>||</code> — logical OR</li>
+		  <li><code>&&</code> — logical AND</li>
+		  <li><code>!, !==</code> — logical NOT, not equal to</li>
+		</ul>
+	</div></section>
+
+    <section class="slide"><div>
+		<h2>Operator precedence</h2>
+		<ul>
+          <li><code>8 + 4 / 3 * 4</code> = 13.33333333333</li>
+          <li>Division/multiplication, then addition/subtraction</li>
+          <li>Source order if precedence is the same</li>
+          <li>Force order using brackets</li>
+          <li><code>(8 + 4) / (3 * 4)</code> = 1</li>
+		</ul>
+	</div></section>
+
+
+
+
+	<section class="slide cover" id="Picture3"><div>
 		<h2>Conditions & loops</h2>
 		<img src="pictures/picture.jpg" alt="">
 		<style>
-			#Picture h2 {
+			#Picture3 h2 {
 				color:#FFF;
 				}
 		</style>
 	</div></section>
 
-	<section class="slide cover" id="Picture"><div>
+	<section class="slide"><div>
+		<h2>Conditional code</h2>
+		<ul>
+          <li>Allows different code to run Depending on a condition</li>
+          <li>If expression is true, run code 1, else run code 2</li>
+		</ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>if ... else pseudocode</h2>
+		<pre>
+			<code>if(condition === true) {</code>
+			<code>  // run expression 1</code>
+			<code>} else {</code>
+			<code>  // run expression 2</code>
+			<code>}</code>
+		</pre>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>if ... else example</h2>
+		<pre>
+			<code>var myTown = prompt('Enter your home town or city');</code>
+			<code>if(myTown === 'Manchester') {</code>
+			<code>  alert('Is it still raining in Manchester?');</code>
+			<code>} else {</code>
+			<code>  alert('I don\'t know your home town very well');</code>
+			<code>}</code>
+		</pre>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>if ... else if ... else example</h2>
+		<pre>
+			<code>if(myTown === 'Manchester') {</code>
+			<code>  alert('Is it still raining in Manchester?');</code>
+			<code>} else if(myTown === 'Barcelona') {</code>
+			<code>  alert("You have beautiful architecture, and sun");</code>
+			<code>} else {</code>
+			<code>  alert('I don\'t know your home town very well');</code>
+			<code>}</code>
+		</pre>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>logical OR and AND</h2>
+		<pre>
+			<code>if(myTown === "Manchester" || myTown === "Bradford") {</code>
+			<code>  alert("It is rainy in those Northern towns.");</code>
+			<code>}</code>
+			<code>&nbsp;</code>
+			<code>if(myTown === "Manchester" && mySeason === "Summer") {</code>
+			<code>  alert("Manchester must be enjoying some warmer weather.");</code>
+			<code>}</code>
+		</pre>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Nesting if ... else</h2>
+		<pre>
+			<code>if(condition1 === true) {</code>
+			<code>  if(condition2 === true) {</code>
+			<code>    // run expression 1 {</code>
+			<code>  }</code>
+			<code>} else {</code>
+			<code>  // run expression 2</code>
+			<code>}</code>
+		</pre>
+	</div></section>
+
+    <section class="slide"><div>
+		<h2>Loops</h2>
+		<ul>
+          <li>Run the same code several times</li>
+          <li>With updated variables each time</li>
+          <li>for loops are the most common</li>
+		</ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>For loop pseudocode</h2>
+		
+		<pre>
+			<code>for(i = <em>starting value</em>; <em>exit-condition</em> ; <em>iterator</em>) {</code>
+			<code>  // run code</code>
+			<code>}</code>
+		</pre>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>For loop features</h2>
+		<ul>
+          <li><code>i</code> — variable</li>
+          <li><em>starting value</em> — what <code>i</code> begins at</li>
+          <li><em>exit-condition</em> — what value <code>i</code> has to be for the loop to keep running</li>
+          <li><em>iterator</em> — how <code>i</code> changes each time the loop is run</li>
+          <li><em>Run code</em> — the code run each time the loop runs</li>
+		</ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>For loop example</h2>
+		
+		<pre>
+			<code>for(i = 0; i <= 20; i++) {</code>
+			<code>  console.log(i);</code>
+			<code>}</code>
+		</pre>
+	</div></section>
+
+
+
+
+
+	<section class="slide cover" id="Picture4"><div>
 		<h2>Document Object Model</h2>
 		<img src="pictures/picture.jpg" alt="">
 		<style>
-			#Picture h2 {
+			#Picture4 h2 {
 				color:#FFF;
 				}
 		</style>
 	</div></section>
 
-	<section class="slide cover" id="Picture"><div>
+	<section class="slide cover" id="Picture5"><div>
+		<h2>The browser converts HTML to a DOM tree</h2>
+		<img src="pictures/dom.jpg" alt="">
+		<style>
+			#Picture5 h2 {
+				color:#000;
+				}
+		</style>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>JavaScript and CSS accessing the DOM</h2>
+		<ol>
+          <li>JS/CSS "walk" up and down the tree</li>
+          <li>Find elements they are interested in</li>
+          <li>Do stuff to those elements</li>
+		</ol>
+
+		<p>This is how many useful things are done on a web page</p>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Example: JavaScript updating element contents</h2>
+		
+	    <p><code>&lt;h1 class="myHeading"&gt;My heading&lt;/h1&gt;</code></p>
+		
+		<pre>
+			<code>var myH1 = document.querySelector('.myHeading');</code>
+			<code>myH1.innerHTML = "My updated heading";</code>
+		</pre>
+	</div></section>
+
+	<section class="slide cover" id="Picture6"><div>
 		<h2>Canvas</h2>
 		<img src="pictures/picture.jpg" alt="">
 		<style>
-			#Picture h2 {
+			#Picture6 h2 {
 				color:#FFF;
 				}
+
 		</style>
 	</div></section>
 
-	<section class="slide cover" id="Picture"><div>
+	<section class="slide"><div>
+		<h2><code>&lt;canvas&gt;</code> is</h2>
+		<ol>
+          <li>A scriptable HTML element</li>
+          <li>Create images using JavaScript</li>
+          <li>Can then animate them, etc.</li>
+		</ol>
+
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Create a canvas + get a context</h2>
+		
+	    <p><code>&lt;canvas width="500" height="500"&gt;
+&lt;/canvas&gt;</code></p>
+		
+		<pre>
+			<code>var myCanvas = document.querySelector('canvas');</code>
+			<code>var myContext = myCanvas.getContext('2d');</code>
+		</pre>
+	</div></section>
+
+    <section class="slide"><div>
+		<h2>Draw squares</h2>
+		
+		<pre>
+			<code>myContext.fillStyle = 'rgba(0,0,255,0.5)';</code>
+			<code>myContext.fillRect(0,0,200,200);</code>
+			<code>&nbsp;</code>
+			<code>myContext.strokeStyle = 'rgba(0,255,0,0.5)';</code>
+			<code>myContext.lineWidth = 1;</code>
+			<code>myContext.strokeRect(200,200,50,50);</code>
+		</pre>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Canvas loops</h2>
+		
+		<pre>
+			<code>myContext.fillStyle = 'rgba(0,0,255,0.15)';</code>
+			<code>for(i = 0; i <= 50; i++) {</code>
+			<code>  myContext.fillRect(i,i,25+i,25+i);</code>
+			<code>}</code>
+		</pre>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>More loop ideas</h2>
+		
+		<ul>
+          <li>Bigger each time — <code>myContext.fillRect((i*6),(i*4),25+(i*10),25+(i*10));</code></li>
+          <li>Bigger loop iterator — <code>i+=5</code></li>
+          <li>Vary colours — <code>myContext.fillStyle = 'rgba(0,0,' + (150+(i*6)) + ',0.15)';</code></li>
+          <li>Random values — <code>Math.floor(Math.random()*200)</code></li>
+          <li>Rotate each time — <code>myContext.rotate(0.025);</code></li>
+		<ul>
+	</div></section>
+
+	<section class="slide" id="CodeSmall1"><div>
+		<h2>More loop ideas</h2>
+		
+		<ul>
+          <li>Sine wave — <code>myContext.fillRect((i*5),(250+(Math.sin(i/6))*50),10,10);</code></li>
+          <li>Circles:</li>
+		<ul>
+
+		<pre>
+          <code>myContext.beginPath();</code>
+          <code>myContext.arc((i*5),(250+(Math.sin(i/6))*50),10,0,Math.PI*2,true);</code>
+          <code>myContext.fill();</code>
+        </pre>
+        <style>
+			#CodeSmall1 pre {
+				font-size: 0.75em;
+		</style>
+	</div></section>
+
+
+
+	<section class="slide cover" id="Picture7"><div>
 		<h2>Functions</h2>
 		<img src="pictures/picture.jpg" alt="">
 		<style>
-			#Picture h2 {
+			#Picture7 h2 {
 				color:#FFF;
 				}
 		</style>
 	</div></section>
 
-	<section class="slide cover" id="Picture"><div>
+	<section class="slide"><div>
+		<h2>Functions are...</h2>
+		
+		<ul>
+          <li>...reusable blocks of code</li>
+          <li>Write once, call multiple times</li>
+          <li>JavaScript has many built-in functions</li>
+          <li>You can also write your own</li>
+		<ul>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Sample function</h2>
+
+		<pre>
+          <code>function random10() {</code>
+          <code>  var randomNumber = Math.floor(Math.random() * 10) + 1;</code>
+          <code>  return randomNumber;</code>
+          <code>}</code>
+          <code>&nbsp;</code>
+          <code>random10(); // call function</code>
+        </pre>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Function with argument</h2>
+
+		<pre>
+          <code>function random(input) {</code>
+          <code>  var randomResult = Math.floor(Math.random() * input) + 1;</code>
+          <code>  return randomResult;</code>
+          <code>}</code>
+          <code>&nbsp;</code>
+          <code>random(250); // call function</code>
+        </pre>
+	</div></section>
+
+	<section class="slide"><div>
+		<h2>Canvas function</h2>
+
+		<pre>
+          <code>function sineWave(number,y) {</code>
+          <code>  for(i=0;i<=number;i++) {</code>
+          <code>    myContext.fillStyle = 'rgba(0,0,'</code>
+          <code>     + (Math.floor(Math.random()*200)) + ',0.5)';</code>
+          <code>    myContext.fillRect((i*5),(y+(Math.sin(i/6))*50),10,10);</code>
+          <code>  }</code>
+          <code>}</code>
+        </pre>
+	</div></section>
+
+
+
+
+
+	
+
+	<section class="slide cover" id="Picture8"><div>
 		<h2>Events</h2>
 		<img src="pictures/picture.jpg" alt="">
 		<style>
-			#Picture h2 {
+			#Picture8 h2 {
 				color:#FFF;
 				}
 		</style>
 	</div></section>
 
-
-
-
-
-
-	<section class="slide"><div>
-		<h2>Shower Key Features</h2>
-		<ol>
-			<li>Built on HTML, CSS and vanilla JavaScript</li>
-			<li>All modern browsers are supported</li>
-			<li>Slide themes are separated from engine</li>
-			<li>Fully keyboard accessible</li>
-			<li>Printable to PDF</li>
-		</ol>
-		<p class="note">Shower ['ʃəuə] noun. A person or thing that shows.</p>
+    <section class="slide"><div>
+		<h2>Events are...</h2>
+		
+		<ul>
+          <li>...how JavaScript responds to user interactions</li>
+          <li>Such as clicking a button</li>
+          <li>Or moving the mouse pointer</li>
+          <li>Event listeners listen out for things happening</li>
+		<ul>
 	</div></section>
+
 	<section class="slide"><div>
-		<h2>Plain Text on Your Slides</h2>
-		<p>Lorem ipsum dolor sit amet, consectetur <a href="#4">adipisicing</a> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, <em>quis nostrud</em> exercitation ullamco laboris <strong>nisi ut aliquip</strong> ex ea commodo consequat. Duis aute irure <i>dolor</i> in reprehenderit in voluptate velit esse cillum <b>dolore</b> eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in <code>&lt;culpa&gt;</code> qui officia deserunt mollit anim id est laborum.</p>
-	</div></section>
-	<section class="slide"><div>
-		<h2>All Kind of Lists</h2>
-		<ol>
-			<li>Simple lists are marked with bullets</li>
-			<li>Ordered lists begin with a number</li>
-			<li>You can even nest lists one inside another
-				<ul>
-					<li>Or mix their types</li>
-					<li>But do not go too far</li>
-					<li>Otherwise audience will be bored</li>
-				</ul>
-			</li>
-			<li>Look, seven rows exactly!</li>
-		</ol>
-	</div></section>
-	<section class="slide"><div>
-		<h2>Serious Citations</h2>
-		<figure>
-			<blockquote>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
-			</blockquote>
-			<figcaption>Marcus Tullius Cicero</figcaption>
-		</figure>
-	</div></section>
-	<section class="slide"><div>
-		<h2>Code Samples</h2>
+		<h2>Sample event usage (anonymous function)</h2>
+
+		<p><code>&lt;button class="welcome"&gt;Click me!&lt;/button&gt;</code></p>
+
 		<pre>
-			<code>&lt;!DOCTYPE html&gt;</code>
-			<code>&lt;html lang="en"&gt;</code>
-			<code><mark>&lt;head&gt;</mark> <mark class="comment">&lt;!--Comment--&gt;</mark></code>
-			<code>    &lt;title&gt;Shower&lt;/title&gt;</code>
-			<code>    &lt;meta charset="<mark class="important">UTF-8</mark>"&gt;</code>
-			<code>    &lt;link rel="stylesheet" href="screen.css"&gt;</code>
-			<code><mark>&lt;/head&gt;</mark></code>
-		</pre>
+          <code>var button = document.querySelector('.welcome');</code>
+          <code>&nbsp;</code>
+          <code>button.onclick = function() {</code>
+          <code>  alert("Ouch, that hurt!");</code>
+          <code>}</code>
+        </pre>
 	</div></section>
+
 	<section class="slide"><div>
-		<h2>Even Tables</h2>
-		<table>
-		<tr>
-			<th scope="col">Locavore</th>
-			<th>Umami</th>
-			<th>Helvetica</th>
-			<th>Vegan</th>
-		</tr>
-		<tr>
-			<th scope="row">Fingerstache</th>
-			<td>Kale</td>
-			<td>Chips</td>
-			<td>Keytar</td>
-		</tr>
-		<tr>
-			<th scope="row">Sriracha</th>
-			<td>Gluten-free</td>
-			<td>Ennui</td>
-			<td>Keffiyeh</td>
-		</tr>
-		<tr>
-			<th scope="row">Thundercats</th>
-			<td>Jean</td>
-			<td>Shorts</td>
-			<td>Biodiesel</td>
-		</tr>
-		<tr>
-			<th scope="row">Terry</th>
-			<td>Richardson</td>
-			<td>Swag</td>
-			<td>Blog</td>
-		</tr>
-		</table>
-		<p>It’s good to have information organized.</p>
-	</div></section>
-	<section class="slide cover" id="Picture"><div>
-		<h2>Pictures</h2>
-		<img src="pictures/picture.jpg" alt="">
-		<style>
-			#Picture h2 {
-				color:#FFF;
-				}
-		</style>
-	</div></section>
-	<section class="slide shout"><div>
-		<h2>You can even shout this way</h2>
-	</div></section>
-	<section class="slide"><div>
-		<h2>Inner Navigation</h2>
-		<ol>
-			<li>Lets you reveal list items one by one</li>
-			<li class="next">To keep some key points</li>
-			<li class="next">In secret from audience</li>
-			<li class="next">But it will work only once</li>
-			<li class="next">Nobody wants to see the same joke twice</li>
-		</ol>
+		<h2>Sample event usage (named function)</h2>
+
+		<pre>
+          <code>var button = document.querySelector('.welcome');</code>
+          <code>&nbsp;</code>
+          <code>function clicky() {</code>
+          <code>  alert("Ouch, that hurt!");</code>
+          <code>}</code>
+          <code>&nbsp;</code>
+          <code>button.onclick = clicky;</code>
+        </pre>
 	</div></section>
 
 
 
 
+	
 
 	<section class="slide"><div>
 		<h2>Credits</h2>

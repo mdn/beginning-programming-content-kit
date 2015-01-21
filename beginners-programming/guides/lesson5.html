@@ -37,7 +37,7 @@
 
 <p>Make a new copy of the template file. Add the following to your HTML area:</p>
 
-<pre><code class="language-markup">&lt;canvas id="myCanvas" width="500" height="500"&gt;
+<pre><code class="language-markup">&lt;canvas width="500" height="500"&gt;
 &lt;/canvas&gt;
 
 &lt;!-- Create a canvas to draw on, 500 x 500 big.
@@ -48,7 +48,7 @@
 
 <p>To grab a reference to this canvas, we need to add two lines to our JavaScript area:</p>
 
-<pre><code class="language-javascript">var myCanvas = document.getElementById('myCanvas');
+<pre><code class="language-javascript">var myCanvas = document.querySelector('canvas');
 // Grab a reference to the canvas element
 
 var myContext = myCanvas.getContext('2d');
@@ -115,7 +115,7 @@ for(i = 0; i <= 9; i++) {
 
 <li>Increase the value of the exit condition so the loop draws more squares.</li>
 
-<li>Make the iterator itself bigger so the loop draws less squares further apart, for example <code>i+=5</code>, which is equivalent to <code>i = i + 5</code> — "take the existing value of i and add 5 to it".</li>
+<li>Make the iterator itself bigger so the loop draws the squares further apart, for example <code>i+=5</code>, which is equivalent to <code>i = i + 5</code> — "take the existing value of i and add 5 to it".</li>
 
 <li>Define the square colour inside the loop and modify it by i too, for example:</li>
 
