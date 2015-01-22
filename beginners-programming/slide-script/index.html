@@ -8,6 +8,30 @@
     <title>Beginners programming slide notes</title>
 
     <link rel="stylesheet" href="../guides/style.css">
+    <style>
+      body {
+	    counter-reset: section;                   
+	  }
+
+	  body > ul {
+	  	padding-top: 30px;
+	  }
+      
+      ol > li {
+      	list-style-type: none;
+      	position: relative;
+      	padding-top: 20px;
+      }
+
+	  ol > li:before {
+	  	position: absolute;
+	  	left: -100px;
+	  	width: 75px;
+	  	text-align: right;
+	    counter-increment: section;               
+	    content: "Slide " counter(section) ": ";
+	  }
+    </style>
     <!--[if lt IE 9]>
       <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -79,7 +103,15 @@
       <li><strong>Canvas loops</strong>: It doesn't take much imagination to start combining loops with drawing on a canvas, to create pretty patterns.</li>
       <li><strong>More loop ideas</strong>: Here are some more ideas for you to try in your loops</li>
       <li><strong>More loop ideas</strong>: And some more! Bear in mind that there is no easy primitive to draw a circle like there is for a rectangle, so you need to start a drawing path with <code>beginPath()</code>, draw a 360 degree <code>arc()</code>, and then end the drawing path with <code>fill()</code>.</li>
-      <li><strong>Functions</strong></li>
+      <li><strong>Functions</strong> are blocks of code that can be defined once, and then called as many times as you like, meaning much more efficient code. We've already used a number of JavaScript's built-in functions, but here we'll look at how to define our own.</li>
+      <li><strong>Sample function</strong>: In this sample function, we see one way of defining a function — using the <code>function</code> keyword, followed by the name you want your function to have, followed by brackets(<code>()</code>), followed by curly braces (<code>{}</code>). Inside the curly brances we put our function code. In this case we are generating a random number between 1 and 10, after which we return the result out of the function using the <code>return</code> keyword. This in effect is the result you get returned when you run the function. You have to call (run) the function using its name followed by brackets.</li>
+      <li><strong>Function with argument</strong>: In this case the code structure is the same, except that inside the brackets we include an <em>argument</em> — this is a variable that we can use inside the function, depending on what result you want. In this case we can now generate a random number between 1 and <em>any</em> number, by specifying it as the argument when we call the function.</li>
+      <li><strong>Canvas function</strong>: This slide shows a simple example of a function that can generate a canvas sine wave of a certain length, at a certain position on the y axis, as specified by two arguments (separated by commas). A good example of how to encapsulte complex code so you only have to write it once.</li>
+      <li><strong>Events</strong></li>
+      <li><strong>Events are...</strong> a feature of JavaScript that allow us to run code in response to user actions — such as clicking a button or moving the mouse — or actions run by other parts of the code — such as a database successfully being saved.</li>
+      <li><strong>Sample event usage (anonymous function)</strong>: The simplest event example involes a button in your HTML. We grab a reference to this button, then attach an event handler property to it — <code>onclick</code>. Its value is set to an anonymouse function that wil fun when the button is clicked.</li>
+      <li><strong>Sample event usage (named function)</strong>: This example does the same thing, but using a named function (which is the same structure as we saw earlier in the functions section.) This fnuction is rthen called on a separate line, but without the brackets you'd usaually use. This is because including the brackets would run the function straight away, but you don't want it to run until you've clicked the button. This code is more complex, but more reusable. You could potentially call this function multiple times.</li>
+      <li><strong>Credits</strong></li>
     </ol>
   </body>
 </html>
