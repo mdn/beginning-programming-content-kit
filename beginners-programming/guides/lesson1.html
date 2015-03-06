@@ -28,17 +28,17 @@
   <p>Next:<br><a href="lesson2.html">Variables</a></p>
 </nav>
 
-<p>A huge amount of software exists in the world, controlling the systems that enrich our lives. Some code is really obvious, such as operating systems like Windows, web sites, and video games. Some is not so obvious, for example the embedded code that controls our microwave, our thermostat, or our car engine.</p>
+<p id="3">A huge amount of software exists in the world, controlling the systems that enrich our lives. Some code is really obvious, such as operating systems like Windows, web sites, and video games. Some is not so obvious, for example the embedded code that controls our microwave, our thermostat, or our car engine.</p>
 
 <p>The exact format, syntax and usage of different types of code differs greatly, but most share fundamental structures and concepts. In this course, we'll aim to teach you these fundamentals. The particular type of code we'll use in this course is JavaScript, the programming language that powers many web sites and applications. We've chosen this one because it is readily available, and very easy to demonstrate tangible results with, but the aim here is not really to just teach you JavaScript, but to teach you the underlying principles that apply to pretty much every programming language.</p>
 
 <h2>What are we doing when we write code?</h2>
 
-<p>Regardless of what type of code we write, we write it to control computer systems: this could be because we want to find more information about those systems, give them information/data to process, or give them instructions. In the same way that we can use a language like English, German or Chinese to ask a person questions and give them instructions, we can use a language like JavaScript to ask computers questions and give them instructions.</p>
+<p id="4">Regardless of what type of code we write, we write it to control computer systems: this could be because we want to find more information about those systems, give them information/data to process, or give them instructions. In the same way that we can use a language like English, German or Chinese to ask a person questions and give them instructions, we can use a language like JavaScript to ask computers questions and give them instructions.</p>
 
 <p>The computer has to take in this code in some way, read it, and then do something as a result. For the computer to understand the code, it has to be written in the right syntax: the structure of any language is important, for making yourself understood. The syntax of English and other human languages is verbs, nouns, adjectives, etc. The syntax of JavaScript is variables, functions, loops, etc.</p>
 
-<p>The computer will have a piece of software that reads the code you write, works out what to do with it, and then returns a result. This is often called an interpreter, or an engine perhaps. In the case of JavaScript, the interpreter is the web browser you are using. A web browser downloads web pages, interprets the code contained within them (which will usually include some JavaScript), and gives you a web page to look at.</p>
+<p id="5">The computer will have a piece of software that reads the code you write, works out what to do with it, and then returns a result. This is often called an interpreter, or an engine perhaps. In the case of JavaScript, the interpreter is the web browser you are using. A web browser downloads web pages, interprets the code contained within them (which will usually include some JavaScript), and gives you a web page to look at.</p>
 
 <p class="note"><strong>Note:</strong>: To make sense of this, let's have a quick look at my <a href="javascript-examples/javascript-gradient-image.html">javascript-gradient-image.html</a> example. This simply creates a drawing canvas on the page using the HTML <code>&lt;canvas&gt;</code> element, then uses JavaScript to place some pixels on the canvas, in this case, a circle filled with a colour gradient, and a copy of the Firefox logo, which it grabs out of an image file. You can view the source of the example by right clicking/Cmd + clicking on the page and selecting the "View Source" or "source" option.</p>
 
@@ -50,9 +50,9 @@
 
 <h2>A quick course in Web</h2>
 
-<p>The web works like so: when you type a web address into your browser, it sends a request to the server that the web site is stored on. The server then sends the files that comprise the web page back to the web browser, which is on the client, aka your computer.</p>
+<p id="6">The web works like so: when you type a web address into your browser, it sends a request to the server that the web site is stored on. The server then sends the files that comprise the web page back to the web browser, which is on the client, aka your computer.</p>
 
-<ul>
+<ul id="7">
   <li>Client-side languages are languages that are sent to the client, then processed (interpreted and displayed). JavaScript is a client-side language.</li>
   <li>Server-side languages are languages that are processed on the server before the result is then sent to the client and displayed. Example: PHP.</li>
 </ul>
@@ -74,7 +74,7 @@
 
 <p>Leave the original intact so that you've always got it to refer to.</p>
 
-<h3>HTML</h3>
+<h3 id="8">HTML</h3>
 
 <p>HTML stands for <em>HyperText Markup Language</em>, and it is the language we use on the Web to add structure and meaning to website content/data. For the purposes of this course, we'll get you to add any HTML you need to write into the indicated section:</p>
 
@@ -100,7 +100,7 @@ AN IDEA. --&gt;
 
 <p class="note"><strong>Note</strong>: For more on the basics of HTML, read <a href="https://developer.mozilla.org/en-US/Learn/Getting_started_with_the_web/HTML_basics">HTML basics</a>.</p>
 
-<h3>CSS</h3>
+<h3 id="9">CSS</h3>
 
 <p>CSS stands for <em>Cascading Style Sheets</em>, and it is the language we use on the Web to style HTML content — to getting it looking how you want. For the purposes of this course, we'll get you to add any CSS you need to write into the indicated section:</p>
 
@@ -136,7 +136,7 @@ COMMENT BELOW. DO NOT PUT ANY CSS ABOVE THE &lt;style&gt; OR BELOW THE
 
 <p class="note"><strong>Note</strong>: For more on the basics of CSS, read <a href="https://developer.mozilla.org/en-US/Learn/Getting_started_with_the_web/CSS_basics">CSS basics</a>.</p>
 
-<h3>JavaScript</h3>
+<h3 id="10">JavaScript</h3>
 
 <p>JavaScript is the language we use to program dynamic functionality on the Web. For the purposes of this course, we'll get you to add any JavaScript you need to write into the indicated section:</p>
 
@@ -152,7 +152,7 @@ COMMENT BELOW. DO NOT PUT ANY CSS ABOVE THE &lt;style&gt; OR BELOW THE
 <p>JavaScript comment lines start with a double forward slash — <code>//</code>. We have provided these as boundaries for you to write your JavaScript into.</p>
 
 <div class="exercise">
-<h3>Exercise: Playing with JavaScript</h3>
+<h3 id="11">Exercise: Playing with JavaScript using browser developer tools</h3>
 <p>We have included one JavaScript line to start you off: <code>console.log('JavaScript test!');</code>. This writes a message into your browser's developer console, accessed by pressing Ctrl + Shift + I (Cmd + Opt + I on Mac OSX, F12 on Internet Explorer) and clicking on the <em>Console</em> tab. Have a look now: you should see something like this:</p>
 
 <img src="images/browser-console.png" alt="browser console with message saying JavaScript test written into it">
@@ -177,6 +177,5 @@ COMMENT BELOW. DO NOT PUT ANY CSS ABOVE THE &lt;style&gt; OR BELOW THE
   </main>
 
   </body>
-
   <script src="prism/prism.js"></script>
 </html>

@@ -20,6 +20,7 @@
         max-width: 700px;
         margin: 0 auto;
         background-color: white;
+        position: relative;
       }
       
       main {
@@ -233,11 +234,24 @@
         border-left: 10px solid purple;
         padding-left: 10px;
       }
+
+      /* || slide numbers */
       
+      [id]:before {
+        content: attr(id);
+        position: absolute;
+        left: -1em;
+        color: #ddd;
+        font-size: 36px;
+        font-family: sans-serif;
+      }
+      
+      /* || media query */
+
       @media all and (max-width: 600px) {
         body {
           max-width: none;
           width: 100%;
-          
+          background
         }
       }

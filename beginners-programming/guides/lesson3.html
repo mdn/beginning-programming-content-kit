@@ -20,7 +20,7 @@
 
     <hgroup>
       <h1>Introduction to programming</h1>
-      <h2>Conditions and loops</h2>
+      <h2 id="19">Conditions and loops</h2>
     </hgroup>
 
 <nav>
@@ -31,11 +31,11 @@
 
 <p>In this part of the course, we'll look at conditions and loops; as before, make a new copy of the <a href="javascript-examples/template.html">template.html</a> file and open it in your browser and text editor.</p>
 
-<h2>Conditional logic</h2>
+<h2 id="20">Conditional logic</h2>
 
 <p>Another very significant part of programming is conditional logic: performing different actions depending on user choices, differences in environment, etc. You might want to reveal whether an answer to a quiz question is correct or not, or do different things depending on different keys being pressed on the keyboard.</p>
 
-<p>Conditional logic is usually done inside an <code>if … else</code> structure (although there are other ways). Let's type in a simple example into the JavaScript area of our tempate file (also see my <a href="javascript-examples/conditional.html">conditional example</a> for a finished version):</p>
+<p id="22">Conditional logic is usually done inside an <code>if … else</code> structure (although there are other ways). Let's type in a simple example into the JavaScript area of our tempate file (also see my <a href="javascript-examples/conditional.html">conditional example</a> for a finished version):</p>
 
 <pre><code class="language-javascript">var myTown = prompt("Enter your home town or city");
 
@@ -70,7 +70,7 @@ alert("I don't know your home town very well");</code></pre>
 <p>This still runs because the browser just keeps moving through the code sequentially. But there is a problem. What goes wrong here when you enter your <code>myTown</code> variable value as <code>Manchester</code> when prompted?</p>
 
 <div class="exercise">
-  <h3>Exercise: Building onto our conditional code</h3>
+  <h3 id="23">Exercise: Building onto our conditional code</h3>
 
   <p>In this exercise, try adding some further conditions onto our existing code, to make it able to respond in more different ways when different town options are entered. Remember that for the first condition you need to write <code>if() {}</code>, for further conditions you need to write <code>else if() {}</code>, and then for your final default condition you just need to write <code>else {}</code>.</p>
 
@@ -83,7 +83,7 @@ alert("I don't know your home town very well");</code></pre>
   </ol>
 </div>
 
-<p>If you want to create a response based on a combination of different conditions, you have a couple of choices. First of all, you can use the OR and AND operators to make an <code>if ... else</code> statement return true if or one or more conditions are true. For example, here's an OR operator being put to use (run the code if <code>myTown</code> equals <code>Manchester</code> OR <code>Bradford</code>):</p>
+<p id="24">If you want to create a response based on a combination of different conditions, you have a couple of choices. First of all, you can use the OR and AND operators to make an <code>if ... else</code> statement return true if or one or more conditions are true. For example, here's an OR operator being put to use (run the code if <code>myTown</code> equals <code>Manchester</code> OR <code>Bradford</code>):</p>
 
 <pre><code class="language-javascript">if(myTown === "Manchester" || myTown === "Bradford") {
   alert("It is rainy in those Northern towns.");
@@ -95,7 +95,7 @@ alert("I don't know your home town very well");</code></pre>
   alert("Manchester must be enjoying some warmer weather.");
 }</code></pre>
 
-<p>There is also nothing to stop you from nesting <code>if ... else</code> structures. For example:</p>
+<p id="25">There is also nothing to stop you from nesting <code>if ... else</code> structures. For example:</p>
 
 <pre><code class="language-javascript">if(myTown === "Manchester") {
   if(mySeason === "Summer") {
@@ -115,7 +115,7 @@ alert("I don't know your home town very well");</code></pre>
 
 </div>
 
-<h2>Loops</h2>
+<h2 id="26">Loops</h2>
 
 <p>Often you will want to do the same thing multiple times, perhaps changing the result a little bit each time. It is really tedious to write out loads of similar lines one after the other, so programming languages tend to provide loops to automate this for you. Let's say we wanted to make a number guessing game, where the program stores a number between 1 and 100 and then you have 20 guesses to get it right. Writing out the same code 20 times, once for each guess would be really tedious:
 
@@ -137,7 +137,7 @@ if(guess === theAnswer) {
 
 etc.</code></pre>
 
-<p>A much better way to do this would be to use a for loop, the general structure of which looks like this:</p>
+<p id="27">A much better way to do this would be to use a for loop, the general structure of which looks like this:</p>
 
 <pre><code class="language-javascript">for(i = 0; i &lt;= 20 ; i++) {
   // code in here can handle guesses 1 - 10, which become
@@ -146,7 +146,7 @@ etc.</code></pre>
 
 <p>Loops nearly always involve a single variable being iterated a certain number of times during the course of the loop. This can be called anything you like, but standard convention dictates that it be called <code>i</code>, mainly due to laziness!</p>
 
-<p>Inside the <code>for()</code> brackets you have three values separated by semi-colons:</p>
+<p id="28">Inside the <code>for()</code> brackets you have three values separated by semi-colons:</p>
 
 <ol>
   <li><code>i = 0</code> — this is the starting value of the variable to be iterated.</li>
@@ -155,7 +155,7 @@ etc.</code></pre>
 </ol>
 
 <div class="exercise">
-<h3>Exercise: Implementing a basic loop</h3>
+<h3 id="29">Exercise: Implementing a basic loop</h3>
 <p>Soon we'll try to build the game described above ourselves, but first let's look at a simple real example that outputs the numbers 1 - 20 into the console pane.</p>
 
 <pre><code class="language-javascript">for(i = 1; i <= 20 ; i++) {
@@ -336,6 +336,5 @@ console.log(20);</code></pre>
   </main>
 
   </body>
-
   <script src="prism/prism.js"></script>
 </html>

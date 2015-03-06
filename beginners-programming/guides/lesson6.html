@@ -29,7 +29,7 @@
   <p>Next:<br><a href="lesson7.html">Further improving our guessing game with events</a></p>
 </nav>
 
-<h2>Functions</h2>
+<h2 id="41">Functions</h2>
 
 <p>We've already seen in-built JavaScript functions, but the good news is that you can define your own. Functions allow you to encapsulate specific code in a block, which you can then easily call any time you like, avoiding the need for you to keep writing the same code out over and over again. As you can imagine, this is really useful.</p>
 
@@ -38,7 +38,7 @@
 <p>We've already looked at some code for creating a random number. Let's now look specifically at generating a random whole number between 1 and 10.</p>
 
 <div class="exercise">
-<h3>Exercise: Creating a simple function</h3>
+<h3 id="42">Exercise: Creating a simple function</h3>
 <p>Create a new template copy; in the browser console, enter the following line a few times:</p> 
 
 <pre><code class="language-javascript">var randomNumber = Math.floor(Math.random() * 10) + 1;
@@ -68,7 +68,7 @@
 
 <p class="note">Note that open and close brackets have to be included after the function name to run it (<em>invoke</em> it, in proper terminology), so we have to write <code>random10()</code>, not just <code>random10</code>. The <code>()</code> is sometimes called the <em>invocation operator</em>. Try running just <code>random10</code> in the console to see what happens!</p>
 
-<h3>Function arguments</h3>
+<h3 id="43">Function arguments</h3>
 
 <p>And there's more. We've also already seen that we can give functions input values (called <code>arguments</code> or <code>parameters</code>), for example above, when we gave the <code>Math.floor</code> function a number to round down:</p>
 
@@ -96,7 +96,7 @@
 
 <p>Cool huh? You can see both the above code examples contained in my <a href="javascript-examples/function.html">basic function example</a>.</p>
 
-<h3>A canvas function</h3>
+<h3 id="44">A canvas function</h3>
 
 <p>Lets go a bit further then, and work on taking some code we created earlier and putting it into a reusable function. For example, my sine wave example from above would look something like this:</p>
 
@@ -140,14 +140,14 @@ function sineWave(number,y) {
 <p>Try creating your own reusable function. How about a more complex version that takes in multiple arguments, allowing you to set your own colour as well? Try it! And then try something more complex too.</p>
 </div>
 
-<h2>User interaction with events</h2>
+<h2 id="45">User interaction with events</h2>
 
-<p>Another essential part of programming is user interaction - how do you allow your users to interact with the user interface of your web page, application or whatever it is you are building and make things happen? This is done with event listeners — these are basically listening posts that listen out for an event happening (such as a button being clicked) then fire a notification when that thing happens that you can then do something in response to.</p>
+<p id="46">Another essential part of programming is user interaction - how do you allow your users to interact with the user interface of your web page, application or whatever it is you are building and make things happen? This is done with event listeners — these are basically listening posts that listen out for an event happening (such as a button being clicked) then fire a notification when that thing happens that you can then do something in response to.</p>
 
 <p>In JavaScript, you can use events in a variety of ways, some of them better than others. In the next example we'll just show one, to give you the idea.</p>
 
 <div class="exercise">
-<h3>Exercise: Simple events exercise</h3>
+<h3 id="47">Exercise: Simple events exercise</h3>
 
 <p>Let's set up a simple button that generates a message when clicked. First of all, take a new copy of the template file. Add the following to the HTML area:</p>
 
@@ -172,14 +172,14 @@ function clicky() {
 
 button.onclick = clicky;</code></pre>
 
-<p>Which uses a <em>named</em> function, and does the same thing. This function does have a definite name, which can be referenced later on.</p>
+<p id="48">This uses a <em>named</em> function, and does the same thing. This function does have a definite name, which can be referenced later on.</p>
 </div>
 
 <p>Note that in this case we are not including the invokation operator — the <code>()</code> - after <code>clicky</code>. This is because in this case we just want to reference the named function we are pointing to, but not run it until the button is clicked. The <code>()</code> is already included where we define the function (<code>function clicky() { ... }</code>); we shouldn't include it twice otherwise it will just run immediately when the page loads.</p>
 
 
 <div class="exercise">
-  <h3>Exercise: a simple number multiplying app</h3>
+  <h3 id="49">Exercise: a simple number multiplying app</h3>
 
   <p>Let's apply what we've learnt in this part of the course to building a simple little app that multiplies two numbers together and gives us the result. To allow the users of our app to enter the numbers to be multiplied, we'll use two form <code>input</code> elements.
 
@@ -268,6 +268,5 @@ var number2 = input2.value;</code></pre>
    
   </main>
   </body>
-
   <script src="prism/prism.js"></script>
 </html>

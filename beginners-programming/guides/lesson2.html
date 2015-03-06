@@ -31,13 +31,13 @@
 
 <p>Now on to the interesting stuff! We'll now have a look at the programming basics that exist in pretty much every programming language, in one form or another. Before starting this section, make a new copy of the <a href="javascript-examples/template.html">template.html</a> file and open it in your browser and text editor.</p>
 
-<h2>Variable basics</h2>
+<h2 id="12">Variable basics</h2>
 
 <p>Variables are containers that allow you to store something that you want to use later on, be that a simple name or age value, or something more complicated. Why would you want to do this? Let's look at a simple program that says hello to you: See my <a href="javascript-examples/hello.html">Hello example</a> (don't look at the source code!)</p>
 
 <p>Without variables, it would be impossible to create a personalised hello message. You'd just have to stick to "Hello there.", which would be really boring. So variables are all about allowing us to create programs that dynamically change depending on things that differ as the program is being used, such as the user using the program, the date and time of day, the weather, and so on. Programming is pretty much impossible without variables.</p>
 
-<p>To use a variable, we first have to declare it — we say "I am making this variable exist. Its name is x, and its initial value is y."</p>
+<p id="13">To use a variable, we first have to declare it — we say "I am making this variable exist. Its name is x, and its initial value is y."</p>
 
 <p>A really simple code example:</p>
 
@@ -56,11 +56,13 @@ myHairColor = "red";
 <p>A few more simple examples follow:</p>
 
 <pre><code class="language-javascript">var myName = "Chris";
+// A string
 // Also note that JavaScript is case sensitive, so myname is
 // a different variable to myName
 
-var myAge = 35;
-var haveKids = true;</code></pre>
+var myAge = 35; // a number
+var haveKids = true; // a boolean
+var favouriteThings = ['raindrops','kettles','packages','ponies'] // an array</code></pre>
 
 <div class="exercise">
 <h3>Exercise: Proving how variables exist and are stored</h3>
@@ -112,7 +114,42 @@ var haveKids = true;</code></pre>
   <p>The <a href="javascript-examples/hello.html">hello example</a> that we checked out at the very start of this section is very similar in the way that it works to the hair colour example we just studied. I'd like you to try writing the hello example into your working template file, and then run it to get it working. DON'T look at the source code unless you get stuck!</p>
 </div>
 
-<h2>An aside on JavaScript syntax</h2>
+<h2 id="14">Variable types</h2>
+
+<p>In JavaScript, different variables have different assigned types:</p>
+
+<ul>
+  <li><strong>Strings</strong> contain strings of text. The presence of quote marks makes them a string. If you didn't use quote marks, you would get an error, because the browser would think the variable value was not a string, but another variable name instead.</li>
+  <li><strong>Integers</strong> contain numbers, which don't need quote marks.</li>
+  <li><strong>Booleans</strong> contain true/false values. These are very useful when creating program logic, as you'll see later.</li>
+  <li><strong>Arrays</strong> contain multiple values at once; these are very useful for containing multiple related values that you want to manipulate in a similar way.</li>
+
+<div class="exercise">
+<h3>Exercise: finding the types of variables</h3>
+
+<p>Let's see if I'm telling the truth. In the JavaScript section of your template file, enter the following block of code, then save, then refresh the browser:</p>
+
+<pre><code class="language-javascript">var myHairColor = "brown";
+// This is a string
+
+var myAge = 35;
+// This is an integer
+
+var haveKids = true;
+// This is a boolean
+
+var faveFoods = ["Coco Pops", "Fajitas", "Curry", "Bacon"];
+// This is an array</code></pre>
+
+<p>Then in the browser console, try outputting the type of each variable, using the <code>typeof</code> operator, like this:</p>
+
+<pre><code class="language-javascript">typeof myHairColor;
+// Return the variable type of the myHairColor variable</code></pre>
+
+<p>What do you get when you try this on an array?</p>
+</div>
+
+<h2 id="15">An aside on JavaScript syntax</h2>
 
 <p>Before we go much further, we ought to dwell on some simple but important syntax rules. A slightly more complex example might look like so:</p>
 
@@ -148,42 +185,7 @@ var yourName;</code></pre>
 
 <pre><code class="language-javascript">var MyName;var yourName;</code></pre>
 
-<h2>Variable types</h2>
-
-<p>In JavaScript, different variables have different assigned types:</p>
-
-<ul>
-  <li><strong>Strings</strong> contain strings of text. The presence of quote marks makes them a string. If you didn't use quote marks, you would get an error, because the browser would think the variable value was not a string, but another variable name instead.</li>
-  <li><strong>Integers</strong> contain numbers, which don't need quote marks.</li>
-  <li><strong>Booleans</strong> contain true/false values. These are very useful when creating program logic, as you'll see later.</li>
-  <li><strong>Arrays</strong> contain multiple values at once; these are very useful for containing multiple related values that you want to manipulate in a similar way.</li>
-
-<div class="exercise">
-<h3>Exercise: finding the types of variables</h3>
-
-<p>Let's see if I'm telling the truth. In the JavaScript section of your template file, enter the following block of code, then save, then refresh the browser:</p>
-
-<pre><code class="language-javascript">var myHairColor = "brown";
-// This is a string
-
-var myAge = 35;
-// This is an integer
-
-var haveKids = true;
-// This is a boolean
-
-var faveFoods = ["Coco Pops", "Fajitas", "Curry", "Bacon"];
-// This is an array</code></pre>
-
-<p>Then in the browser console, try outputting the type of each variable, using the <code>typeof</code> operator, like this:</p>
-
-<pre><code class="language-javascript">typeof myHairColor;
-// Return the variable type of the myHairColor variable</code></pre>
-
-<p>What do you get when you try this on an array?</p>
-</div>
-
-<h2>Operators</h2>
+<h2 id="16">Operators</h2>
 
 <p>In programming you'll meet many operators that you can use for calculations and comparisons. We've already seen a couple, such as <code>=</code> and <code>typeof</code>, and I've provided a more complete list of JavaScript's common operators below for reference. We won't laboriously go through all of these, just a few to give you an idea. We'll see examples of others as we move through the course.</p>
 
@@ -195,7 +197,7 @@ var faveFoods = ["Coco Pops", "Fajitas", "Curry", "Bacon"];
 <li><strong>%</strong> : the modulus operator; returns the remainder of one number being divided by another</li>
 <li><strong>=</strong> : the assignment operator</li>
 <li><strong>==</strong> : the equality operator (don't use this)</li>
-<li><strong>===</strong>: the strict equality operator (use this instead)</li>
+<li id="17"><strong>===</strong>: the strict equality operator (use this instead)</li>
 <li><strong>||</strong> : the or operator</li>
 <li><strong>&&</strong> : the and operator</li>
 <li><strong>!</strong> : the not operator</li>
@@ -235,7 +237,7 @@ num1 + num2;
 
 8 + 4 / 3 * 4;</code></pre>
 
-<p>The last example is interesting - does it give you the result you were expecting? (I would expect the result to be 1!) JS uses <strong>operator precedence</strong> to dictate what order the different parts of the equation will be executed in. If it is not turning out like you'd hoped, you can always add brackets to force the order, for example:</p>
+<p id="18">The last example is interesting - does it give you the result you were expecting? (I would expect the result to be 1!) JS uses <strong>operator precedence</strong> to dictate what order the different parts of the equation will be executed in. If it is not turning out like you'd hoped, you can always add brackets to force the order, for example:</p>
 
 <pre><code class="language-javascript">(8 + 4) / (3 * 4);</code></pre>
 </div>
@@ -252,6 +254,5 @@ num1 + num2;
   </main>
 
   </body>
-
   <script src="prism/prism.js"></script>
 </html>

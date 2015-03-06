@@ -20,7 +20,7 @@
 
     <hgroup>
       <h1>Introduction to programming</h1>
-      <h2>Have fun drawing: HTML5 canvas basics</h2>
+      <h2 id="34">Have fun drawing: HTML5 canvas basics</h2>
     </hgroup>
 
 <nav>
@@ -29,11 +29,11 @@
   <p>Next:<br><a href="lesson6.html">Functions and events</a></p>
 </nav>
 
-<p>One of the best way to see instant results with JavaScript is by writing some simple HTML5 <code>&lt;canvas&gt;</code> examples. Canvas is a technology that allows you to use JavaScript to draw a bitmap image, which can then be manipulated/changed.</p>
+<p id="35">One of the best way to see instant results with JavaScript is by writing some simple HTML5 <code>&lt;canvas&gt;</code> examples. Canvas is a technology that allows you to use JavaScript to draw a bitmap image, which can then be manipulated/changed.</p>
 
 <p>To do something with a canvas, you first have create one on your HTML page, like putting a picture frame on your wall.</p>
 
-<h2>Getting started</h2>
+<h2 id="36">Getting started</h2>
 
 <p>Make a new copy of the template file. Add the following to your HTML area:</p>
 
@@ -56,7 +56,7 @@ var myContext = myCanvas.getContext('2d');
 
 <p>First of all we store a reference to the Canvas inside the <code>myCanvas</code> variable, in the same way as we saw above. Then we create a drawing context for our canvas, inside a <code>myContext</code> variable. Why did this take two steps? Well, 2d is not the only context you can draw in using canvas. There is also an experimental WebGL (3D context) that allows you to draw things into real 3D space, but we won't touch that here because it's way too complicated!</p>
 
-<p>Next, let's draw a simple rectangle on our canvas — add these lines to the bottom of the JavaScript area:</p>
+<p id="37">Next, let's draw a simple rectangle on our canvas — add these lines to the bottom of the JavaScript area:</p>
 
 <pre><code class="language-javascript">myContext.fillStyle = 'rgba(0,0,255,0.5)';
 // What colour do we want to draw the rectangle?
@@ -86,7 +86,7 @@ myContext.strokeRect(200,200,50,50);
 // Draw an outline rectangle, not a solid colour
 //rectangle like before</code></pre>
 
-<h2>Canvas loops</h2>
+<h2 id="38">Canvas loops</h2>
 
 <p>Lets look at some more complex loop examples with canvas. Type in the following, at the bottom of your JavaScipt area:</p>
 
@@ -126,7 +126,7 @@ for(i = 0; i <= 9; i++) {
 <li>You could also try using random values; Try using say <code>Math.floor(Math.random()*200)</code> for one or more of the RGB colour values, for example.</li>
 </ol>
 
-<h4>Advanced ideas</h4>
+<h4 id="39">Advanced loop ideas</h4>
 
 <p>How about rotating the squares? Canvas has a built-in <code>rotate</code> function, which unhelpfully takes a rotation value in <a href="http://www.mathsisfun.com/geometry/radians.html">radians</a>. Just try playing with really small values; for example, try adding this at the bottom of your for loop (just before the closing curly brace (<code>}</code>)):</p>
 
@@ -138,7 +138,7 @@ for(i = 0; i <= 9; i++) {
   myContext.fillRect((i*5),(250+(Math.sin(i/6))*50),10,10);  
 }</code></pre>
 
-<p>Or how about replacing our square with a circle? You can draw a circle using the <code>arc()</code> function, but this is a bit more complicated than before. To draw a circle you need to tell canvas to begin the drawing path with <code>beginPath()</code>, and then draw the circle using <code>fill()</code> (or <code>stroke()</code>, if you only want an outline circle; you'd have to use <code>strokeStyle()</code> to set the stroke colour in this case, not <code>fillStyle()</code>):</p>
+<p id="40">Or how about replacing our square with a circle? You can draw a circle using the <code>arc()</code> function, but this is a bit more complicated than before. To draw a circle you need to tell canvas to begin the drawing path with <code>beginPath()</code>, and then draw the circle using <code>fill()</code> (or <code>stroke()</code>, if you only want an outline circle; you'd have to use <code>strokeStyle()</code> to set the stroke colour in this case, not <code>fillStyle()</code>):</p>
 
 <pre><code class="language-javascript">var myCanvas = document.getElementById('myCanvas');
 var myContext = myCanvas.getContext('2d');
@@ -166,6 +166,5 @@ for(i=0;i<=100;i++) {
   </main>
 
   </body>
-
   <script src="prism/prism.js"></script>
 </html>
